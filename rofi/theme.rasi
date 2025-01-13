@@ -1,0 +1,14 @@
+/* 
+  bg - background
+  fg - foreground
+  br - border
+*/
+
+* {
+  main-bg:        #1e1e2e;
+  main-fg:        #cdd6f4;
+  main-br:        #cba6f7;
+  input-bg:       #11111b;
+  select-bg:      #cba6f7;
+  select-fg:      #1e1e2e;
+}
