@@ -55,7 +55,7 @@
     "tooltip": true,
     "min-length": 3,
     "max-length": 3,
-    "on-click": "rofi -show drun"
+    "on-click": "~/.config/rofi/scripts/rofi.sh app"
   },
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace -1",

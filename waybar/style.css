@@ -103,7 +103,7 @@ tooltip label {
 
 /* === Modules === */
 
-/* == Window Icon == */
+/* == Launch Icon == */
 
 #custom-ws {
   background: @blue;
@@ -113,6 +113,10 @@ tooltip label {
   border-radius: 6px 0 0 6px;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: none;
+}
+
+#custom-ws:hover {
+  color: @surface1;
 }
 
 /* == Workspaces == */
@@ -211,7 +215,7 @@ tooltip label {
 }
 
 #idle_inhibitor:hover {
-  text-shadow: none;
+  color: @surface1;
 }
 
 #custom-right2 {
@@ -388,7 +392,5 @@ tooltip label {
 }
 
 #custom-power:hover {
-  color: @base;
-  text-shadow: none;
-  box-shadow: none;
+  color: @surface1;
 }
