@@ -47,7 +47,7 @@ tooltip label {
 
 #workspaces button.active {
   color: @base;
-  background: @blue;
+  background: @mauve;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   border-radius: 0;
@@ -106,7 +106,7 @@ tooltip label {
 /* == Launch Icon == */
 
 #custom-ws {
-  background: @blue;
+  background: @mauve;
   color: @base;
   margin: 0;
   padding: 0 4px;
@@ -122,7 +122,7 @@ tooltip label {
 /* == Workspaces == */
 
 #custom-left1 {
-  background: @blue;
+  background: @mauve;
   color: @surface1;
   font-size: 12pt;
   padding-left: 2px;
@@ -197,7 +197,7 @@ tooltip label {
 /* == Distro Icon == */
 
 #custom-left5 {
-  color: @blue;
+  color: @mauve;
   font-size: 12pt;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.6);
   padding-left: 3px;
@@ -205,7 +205,7 @@ tooltip label {
 
 #idle_inhibitor {
   color: @base;
-  background: @blue;
+  background: @mauve;
   font-size: 12pt;
   margin-right: -1px;
   margin-bottom: -2px;
@@ -219,7 +219,7 @@ tooltip label {
 }
 
 #custom-right2 {
-  color: @blue;
+  color: @mauve;
   font-size: 12pt;
 }
 
@@ -375,7 +375,7 @@ tooltip label {
 /* == Power Button == */
 
 #custom-leftin2 {
-  background: @blue;
+  background: @mauve;
   color: @overlay0;
   font-size: 13pt;
   margin-bottom: -2px;
@@ -383,7 +383,7 @@ tooltip label {
 
 #custom-power {
   color: @base;
-  background: @blue;
+  background: @mauve;
   margin: 0;
   padding: 0 4px;
   border-radius: 0 6px 6px 0;
