@@ -41,6 +41,7 @@ tooltip label {
 
 #workspaces button:hover {
   color: @lavender;
+  background: none;
   text-shadow: none;
   box-shadow: none;
 }

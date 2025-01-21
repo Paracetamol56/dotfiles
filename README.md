@@ -23,6 +23,10 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 
 ![Dev](./assets/dev.png)
 
+### Rofi Application Launcher
+
+![Dev](./assets/rofi.png)
+
 ## 💡 Usage Permission
 
 Feel free to use, modify, and build upon these dotfiles for your personal setup.
