@@ -1,7 +1,7 @@
 /* App launcher, window switcher, file browser */
 
 configuration {
-  font:                     "JetBrainsMono Nerd Font 10";
+  font:                     "FiraCode Nerd Font 10";
   display-drun:             " ";
   drun-display-format:      "{name}";
   show-icons:               true;

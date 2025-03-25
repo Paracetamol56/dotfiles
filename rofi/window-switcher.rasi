@@ -1,7 +1,7 @@
 /* App launcher, window switcher, file browser */
 
 configuration {
-  font:                     "JetBrainsMono Nerd Font 8";
+  font:                     "FiraCode Nerd Font 10";
   display-window:           "󰣆 ";
   window-format:            "{c:10} :: {t:24}";
   

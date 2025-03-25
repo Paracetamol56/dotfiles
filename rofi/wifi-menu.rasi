@@ -1,7 +1,7 @@
 /* WiFi menu */
 
 configuration {
-  font:                     "JetBrainsMono Nerd Font 10";
+  font:                     "FiraCode Nerd Font 10";
 }
 
 @theme "~/.config/rofi/theme.rasi"
@@ -10,8 +10,8 @@ configuration {
 
 window {
   location:                 north;
-  anchor:                   south;
-  y-offset:                 3px;
+  anchor:                   north;
+  y-offset:                 40px;
   width:                    350px;
   border-radius:            6px;
   background-color:         @main-bg;
