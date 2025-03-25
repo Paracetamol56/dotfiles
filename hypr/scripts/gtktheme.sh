@@ -2,7 +2,7 @@
 
 SCHEME='prefer-dark'
 THEME='catppuccin-mocha-mauve-standard+default'
-ICONS='Caticons'
+ICONS='Papirus'
 CURSOR='catppuccin-mocha-dark-cursors'
 SIZE=18
 FONT='FiraCode Nerd Font'
