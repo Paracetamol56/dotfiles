@@ -4,11 +4,10 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 
 ## 🖥️ System Configuration
 
-- **Operating System:** Arch Linux
+- **Operating System:** Arch Linux <small>BTW</small>
 - **Window Manager:** Hyprland
-- **Wallpaper Manager:** Hyprpaper
 - **Terminal Emulator:** Kitty
-- **Terminal Tools:** Neofetch, Btop
+- **Terminal Tools:** Fastfetch, Btop, Jellyfin-TUI, Lazygit
 - **Application Launcher:** Rofi
 - **Status Bar:** Waybar
 - **File Manager:** Thunar
@@ -34,6 +33,6 @@ If you do, please credit this repository and include the accompanying LICENSE fi
 
 ## 💡 Credits
 
-**Waybar Inspiration & Rofi Scripts :** [Hyprrice by sejjy](https://github.com/sejjy/hyprrice)
-**Catppuccin Mocha Wallpaper Collection :** [orangci/walls-catppuccin-mocha](https://github.com/orangci/walls-catppuccin-mocha)
-**Favorite Theme :** [Catppuccin (Mocha, Blue/Mauve Accent)](https://catppuccin.com)
+**Waybar Inspiration & Rofi Scripts :** [Hyprrice by sejjy](https://github.com/sejjy/hyprrice)<br>
+**Catppuccin Mocha Wallpaper Collection :** [orangci/walls-catppuccin-mocha](https://github.com/orangci/walls-catppuccin-mocha)<br>
+**Favorite Theme :** [Catppuccin (Mocha, Blue/Mauve Accent)](https://catppuccin.com)<br>
