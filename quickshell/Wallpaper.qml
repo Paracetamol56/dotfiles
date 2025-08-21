@@ -27,6 +27,11 @@ PanelWindow {
         z: 0
     }
 
+    /*Rain {
+      anchors.fill: parent
+      z: 0
+    }*/
+
     // Centered clock
     Clock {
       anchors.centerIn: parent
@@ -41,4 +46,9 @@ PanelWindow {
         fillMode: Image.PreserveAspectCrop
         z: 2
     }
+
+    /*Rain {
+      anchors.fill: parent
+      z: 3
+    }*/
 }

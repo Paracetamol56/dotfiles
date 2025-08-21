@@ -14,6 +14,9 @@ case "$1" in
 "power")
   pkill -x rofi || "$HOME/.config/waybar/scripts/power-menu.sh"
   ;;
+"audio")
+  pkill -x rofi || "$HOME/.config/rofi/scripts/audio-menu.sh"
+  ;;
 *)
   echo "Invalid argument"
   exit 1
