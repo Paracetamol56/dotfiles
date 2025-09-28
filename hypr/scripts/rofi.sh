@@ -20,6 +20,9 @@ case "$1" in
 "bluetooth")
   pkill -x rofi || "$HOME/.config/waybar/scripts/bluetooth-menu.sh"
   ;;
+"audio")
+  pkill -x rofi || "$HOME/.config/rofi/scripts/audio-menu.sh"
+  ;;
 *)
   echo "Invalid argument"
   exit 1
