@@ -28,6 +28,18 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 
 ## 💡 Usage Permission
 
+### Basic packages installation
+
+#### Stable/Extra packages
+```bash
+sudo pacman -S git neovim waybar rofi btop dunst firefox docker docker-compose thunar zsh discord bluez bluez-utils brightnessctl signal-desktop neofetch grim blueman vlc hyprpaper syncthing papiru-icon-theme cliphist
+```
+#### AUR packages
+```bash
+yay -S zen-browser obsidian spotify catppuccin-cursor-mocha wl-clipboard qimgv papirus-folder-catppuccin-git gitkraken powerlevel10k
+papirus-folder -C cat-mocha-mauve
+```
+
 Feel free to use, modify, and build upon these dotfiles for your personal setup.
 If you do, please credit this repository and include the accompanying LICENSE file in your project.
 
