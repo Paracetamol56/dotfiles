@@ -26,9 +26,9 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 
 ![Dev](./assets/rofi.png)
 
-## 💡 Usage Permission
+## Basic setup
 
-### Basic packages installation
+### Packages installation
 
 #### Stable/Extra packages
 ```bash
@@ -36,9 +36,14 @@ sudo pacman -S git neovim waybar rofi btop dunst firefox docker docker-compose t
 ```
 #### AUR packages
 ```bash
-yay -S zen-browser obsidian spotify catppuccin-cursor-mocha wl-clipboard qimgv papirus-folder-catppuccin-git gitkraken powerlevel10k
+yay -S zen-browser obsidian spotify catppuccin-cursors-mocha wl-clipboard qimgv papirus-folders-catppuccin-git gitkraken 
+```
+
+```bash
 papirus-folder -C cat-mocha-mauve
 ```
+
+## 💡 Usage Permission
 
 Feel free to use, modify, and build upon these dotfiles for your personal setup.
 If you do, please credit this repository and include the accompanying LICENSE file in your project.
