@@ -5,6 +5,14 @@ return {
 		name = "catppuccin",
 		opts = {
 			transparent_background = true,
+			lsp_styles = {
+				underlines = {
+					errors = { "undercurl" },
+					hints = { "undercurl" },
+					warnings = { "undercurl" },
+					information = { "undercurl" },
+				},
+			},
 			integrations = {
 				aerial = true,
 				alpha = true,
@@ -20,26 +28,14 @@ return {
 				leap = true,
 				lsp_trouble = true,
 				mason = true,
-				markdown = true,
 				mini = true,
-				native_lsp = {
-					enabled = true,
-					underlines = {
-						errors = { "undercurl" },
-						hints = { "undercurl" },
-						warnings = { "undercurl" },
-						information = { "undercurl" },
-					},
-				},
 				navic = { enabled = true, custom_bg = "lualine" },
 				neotest = true,
 				neotree = true,
 				noice = true,
 				notify = true,
-				semantic_tokens = true,
 				snacks = true,
 				telescope = true,
-				treesitter = true,
 				treesitter_context = true,
 				which_key = true,
 			},
@@ -50,7 +46,7 @@ return {
 				optional = true,
 				opts = function(_, opts)
 					if (vim.g.colors_name or ""):find("catppuccin") then
-						opts.highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
+						opts.highlights = require("catppuccin.special.bufferline").get_theme()
 					end
 				end,
 			},
