@@ -18,7 +18,7 @@ while true; do
 
   if [ "$bat_lvl" -le 20 ] && [ "$bat_status" = "Discharging" ]; then
     if ! $notified; then
-      notify-send --urgency=critical "Battery Low" "Level: ${bat_lvl}%"
+      notify-send --urgency=high "Battery Low" "Level: ${bat_lvl}%"
       notified=true
     fi
   else
