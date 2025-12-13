@@ -20,6 +20,9 @@ case "$1" in
 "bluetooth")
   pkill -x rofi || "$HOME/.config/waybar/scripts/bluetooth-menu.sh"
   ;;
+"emoji")
+  pkill -x rofi || rofi -modi emoji -show emoji -config "$HOME/.config/rofi/emoji-menu.rasi"
+  ;;
 "audio")
   pkill -x rofi || "$HOME/.config/rofi/scripts/audio-menu.sh"
   ;;

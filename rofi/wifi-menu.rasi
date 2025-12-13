@@ -11,8 +11,8 @@ configuration {
 window {
   location:                 north;
   anchor:                   north;
-  y-offset:                 40px;
-  width:                    350px;
+  y-offset:                 20px;
+  width:                    300px;
   border-radius:            6px;
   background-color:         @main-bg;
   children:                 [ mainbox ];
