@@ -1,7 +1,7 @@
 #!/bin/bash
 
-asusctl profile -n
+asusctl profile next
 
-profile=$(asusctl profile -p | grep -oP '(?<=Active profile is ).*')
+profile=$(asusctl profile get | grep -oP '(?<=Active profile: ).*')
 
 notify-send "Reactor mode: $profile"
