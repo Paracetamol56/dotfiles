@@ -1,0 +1,4 @@
+module components.center
+Stats           Stats.qml
+IdleInhibitor   IdleInhibitor.qml
+Info            Info.qml

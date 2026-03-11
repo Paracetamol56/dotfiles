@@ -1,0 +1,3 @@
+module components.left
+LeftGroup       LeftGroup.qml
+WindowTitle     WindowTitle.qml

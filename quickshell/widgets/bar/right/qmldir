@@ -1,0 +1,3 @@
+module components.right
+Media           Media.qml
+RightGroup      RightGroup.qml
