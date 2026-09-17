@@ -1,0 +1,22 @@
+-- Input configuration for Hyprland
+
+hl.config({
+	input = {
+		-- Keyboard
+		kb_layout = "fr",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "",
+		kb_rules = "",
+
+		-- Mouse
+		follow_mouse = 1,
+		sensitivity = 0,
+
+		touchpad = {
+			natural_scroll = true,
+		},
+
+		numlock_by_default = true,
+	},
+})
