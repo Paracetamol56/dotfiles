@@ -1,9 +1,9 @@
 -- Animations configuration for Hyprland
 
 -- Bezier curve definition
-hl.curve("myBezier", {
+hl.curve("easeOutSine", {
 	type = "bezier",
-	points = { { 0.10, 0.9 }, { 0.1, 1.05 } },
+	points = { { 0.61, 1 }, { 0.88, 1 } },
 })
 
 -- Animation definitions
@@ -11,7 +11,7 @@ hl.animation({
 	leaf = "windows",
 	enabled = true,
 	speed = 1,
-	bezier = "myBezier",
+	bezier = "easeOutSine",
 	style = "popin",
 })
 
@@ -19,7 +19,7 @@ hl.animation({
 	leaf = "windowsOut",
 	enabled = true,
 	speed = 1,
-	bezier = "myBezier",
+	bezier = "easeOutSine",
 	style = "popin",
 })
 
@@ -41,6 +41,6 @@ hl.animation({
 	leaf = "workspaces",
 	enabled = true,
 	speed = 1,
-	bezier = "myBezier",
+	bezier = "easeOutSine",
 	style = "slidefade",
 })
