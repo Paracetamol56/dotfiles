@@ -82,7 +82,10 @@ PanelWindow {
                         readonly property bool active: bar.monitor?.activeWorkspace?.id === wsId
                         readonly property bool occupied: Hyprland.workspaces.values.some(w => w.id === wsId && w.toplevels.values.length > 0)
 
-                        text: wsId
+                        // Kanji numerals instead of digits
+                        text: ["一", "二", "三", "四", "五", "六", "七", "八"][index]
+
+                        label.font.family: "Noto Sans CJK JP"
                         padding: 8
                         minWidth: 26
                         clickable: !active
@@ -176,6 +179,8 @@ PanelWindow {
             text: t + "°C"
             textColor: t >= 80 ? Theme.red : Theme.text
             tooltip: `Temperature: ${t}°C\nClock Speed: ${Stats.cpuFreq}`
+            clickable: true
+            onClicked: Panels.toggle("performance", bar.modelData)
         }
 
         // Memory
@@ -187,6 +192,8 @@ PanelWindow {
             text: p + "%"
             textColor: p >= 90 ? Theme.red : p >= 75 ? Theme.peach : Theme.text
             tooltip: `Memory Used: ${Stats.memUsed.toFixed(1)} GB / ${Stats.memTotal.toFixed(1)} GB`
+            clickable: true
+            onClicked: Panels.toggle("performance", bar.modelData)
         }
 
         // CPU usage
@@ -198,6 +205,8 @@ PanelWindow {
             text: u + "%"
             textColor: u >= 80 ? Theme.red : Theme.text
             tooltip: Stats.cpuModel + "\nCPU Usage: " + (u >= 80 ? "Critical" : u >= 60 ? "High" : u >= 25 ? "Moderate" : "Low")
+            clickable: true
+            onClicked: Panels.toggle("performance", bar.modelData)
         }
     }
 

@@ -22,6 +22,29 @@ Modal {
         precision: SystemClock.Minutes
     }
 
+    // Quick toggles, top right next to the greeting
+    Row {
+        anchors.top: root.header.top
+        anchors.right: root.header.right
+        spacing: 8
+
+        Button {
+            icon: Icons.moon
+            tooltip: !NightLight.available ? "Night light · install hyprsunset" : NightLight.enabled ? "Night light: on" : "Night light: off"
+            checked: NightLight.enabled
+            enabled: NightLight.available
+            onClicked: NightLight.toggle()
+        }
+
+        // Same inhibitor as the coffee cup in the bar
+        Button {
+            icon: Icons.coffee
+            tooltip: Stats.presentationMode ? "Stay awake: on (no idle, lock or sleep)" : "Stay awake: off"
+            checked: Stats.presentationMode
+            onClicked: Stats.presentationMode = !Stats.presentationMode
+        }
+    }
+
     // Widgets, three rows: wide ones on the left, narrow ones filling the right
     MediaPlayer {
         id: media

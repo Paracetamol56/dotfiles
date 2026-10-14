@@ -10,6 +10,8 @@ Rectangle {
     property bool filled: false
     // Highlighted, e.g. while a scan it started is running
     property bool checked: false
+    // Shown on hover, e.g. for icon-only buttons
+    property string tooltip: ""
     property bool enabled: true
     signal clicked
 
@@ -51,8 +53,14 @@ Rectangle {
         id: mouse
         anchors.fill: parent
         hoverEnabled: true
-        enabled: button.enabled
-        cursorShape: Qt.PointingHandCursor
-        onClicked: button.clicked()
+        // Hover stays on when disabled, so the tooltip can still explain why
+        cursorShape: button.enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
+        onClicked: if (button.enabled) button.clicked()
+    }
+
+    Tooltip {
+        target: button
+        hovered: mouse.containsMouse
+        text: button.tooltip
     }
 }

@@ -138,8 +138,6 @@ Modal {
                     height: 40
                     radius: Theme.radius
                     color: isArmed ? Qt.alpha(modelData.color, 0.35) : active ? Qt.alpha(modelData.color, 0.18) : "transparent"
-                    border.width: active || isArmed ? 1 : 0
-                    border.color: Qt.alpha(modelData.color, 0.6)
 
                     Behavior on color {
                         ColorAnimation {

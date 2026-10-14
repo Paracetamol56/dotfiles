@@ -118,4 +118,23 @@ Singleton {
     readonly property string micOff: "\ue119" // mic-off
     readonly property string check: "\ue06c" // check
     readonly property string audioWaveform: "\ue55b" // audio-waveform
+    readonly property string hardDrive: "\ue0ed" // hard-drive
+    readonly property string arrowDown: "\ue042" // arrow-down
+    readonly property string arrowUp: "\ue04a" // arrow-up
+    readonly property string leaf: "\ue2de" // leaf
+    readonly property string zap: "\ue1b4" // zap
+    readonly property string gauge: "\ue1bf" // gauge
+    readonly property string activity: "\ue038" // activity
+    readonly property string list: "\ue106" // list
+    readonly property string factory: "\ue29f" // factory
+    readonly property string gpu: "\ue66a" // gpu
+    readonly property string file: "\ue0c0" // file
+    readonly property string fileImage: "\ue31c" // file-image
+    readonly property string fileVideo: "\ue321" // file-video
+    readonly property string fileAudio: "\ue31a" // file-audio
+    readonly property string fileCode: "\ue0c3" // file-code
+    readonly property string fileArchive: "\ue30d" // file-archive
+    readonly property string fileClock: "\ue315" // file-clock
+    readonly property string squareTerminal: "\ue20a" // square-terminal
+    readonly property string externalLink: "\ue0b9" // external-link
 }

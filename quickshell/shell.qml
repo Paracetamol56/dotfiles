@@ -65,4 +65,10 @@ ShellRoot {
 
     LauncherModal {}
   }
+
+  Variants {
+    model: Quickshell.screens
+
+    PerformanceModal {}
+  }
 }
