@@ -1,0 +1,161 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Catppuccin Mocha powerline — two lines, mirrors the old p10k "rainbow" layout
+add_newline = true
+palette = "catppuccin_mocha"
+
+format = """
+$os\
+[](fg:mauve bg:blue)\
+$directory\
+[](fg:blue bg:green)\
+$git_branch\
+$git_status\
+[](fg:green)
+$character"""
+
+right_format = """
+$status\
+$cmd_duration\
+$jobs\
+$c\
+$rust\
+$golang\
+$nodejs\
+$bun\
+$python\
+$lua\
+$docker_context\
+$username\
+$hostname\
+$time"""
+
+# ── left ────────────────────────────────────────────
+
+[os]
+disabled = false
+style = "fg:crust bg:mauve"
+format = "[ $symbol ]($style)"
+
+[os.symbols]
+Arch = "󰣇"
+
+[directory]
+style = "fg:crust bg:blue"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = " 󰌾 "
+read_only_style = "fg:red bg:blue"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[directory.substitutions]
+"~/.config" = "󰒓 config"
+"~/Documents" = "󰈙 "
+"~/Downloads" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:crust bg:green"
+format = "[ $symbol $branch ]($style)"
+
+[git_status]
+style = "fg:crust bg:green"
+format = "[($all_status$ahead_behind )]($style)"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+# ── right ───────────────────────────────────────────
+
+[status]
+disabled = false
+symbol = "✘"
+format = "[$symbol $status ](bold red)"
+
+[cmd_duration]
+min_time = 3_000
+format = "[󱦟 $duration ](peach)"
+
+[jobs]
+symbol = " "
+format = "[$symbol$number ](teal)"
+
+[c]
+symbol = " "
+format = "[$symbol($version) ](blue)"
+
+[rust]
+symbol = "󱘗 "
+format = "[$symbol($version) ](peach)"
+
+[golang]
+symbol = " "
+format = "[$symbol($version) ](sapphire)"
+
+[nodejs]
+symbol = " "
+format = "[$symbol($version) ](green)"
+
+[bun]
+symbol = " "
+format = "[$symbol($version) ](rosewater)"
+
+[python]
+symbol = " "
+format = "[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )](yellow)"
+
+[lua]
+symbol = " "
+format = "[$symbol($version) ](blue)"
+
+[docker_context]
+symbol = " "
+format = "[$symbol$context ](sapphire)"
+
+# user@host only shows over SSH, like p10k's context segment
+[username]
+style_user = "mauve"
+format = "[$user]($style)"
+
+[hostname]
+style = "lavender"
+format = "[@$hostname ]($style)"
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = "[ $time](overlay1)"
+
+# ── palette ─────────────────────────────────────────
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+

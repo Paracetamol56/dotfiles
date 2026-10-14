@@ -23,6 +23,7 @@
 !/rofi/
 !/waybar/
 
+!/starship.toml
 
 gtk-3.0/bookmarks
 /qimgv/savedState.conf
