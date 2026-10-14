@@ -1,0 +1,60 @@
+// Catppuccin Mocha — matches hypr/mocha.conf, kitty, btop and nvim
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "builtin",
+    "source": "arch_small",
+    "color": { "1": "38;2;203;166;247", "2": "38;2;180;190;254" }, // mauve / lavender
+    "padding": { "top": 2, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "38;2;180;190;254", // lavender
+      "title": "38;2;203;166;247" // mauve
+    },
+    "key": { "width": 6 },
+    "size": { "binaryPrefix": "jedec", "ndigits": 1 },
+    "percent": { "type": 3 },
+    "bar": { "width": 12, "char": { "elapsed": "━", "total": "━" } }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "format": "{#38;2;203;166;247}󰣇 {user-name}{#38;2;108;112;134} @ {#38;2;137;180;250}{host-name}"
+    },
+    {
+      "type": "custom",
+      "format": "{#38;2;108;112;134}──────────────────────────────"
+    },
+
+    // ── system ───────────────────────────
+    { "type": "os", "key": "󰣇", "keyColor": "38;2;137;180;250", "format": "{name} {#38;2;108;112;134}({arch})" },
+    { "type": "kernel", "key": "", "keyColor": "38;2;137;180;250", "format": "{release}" },
+    {
+      "type": "command",
+      "key": "󰃭",
+      "keyColor": "38;2;137;180;250",
+      "text": "echo \"installed $(( ($(date +%s) - $(stat -c %W /)) / 86400 )) days ago\""
+    },
+    { "type": "uptime", "key": "󰔟", "keyColor": "38;2;137;180;250", "format": "up {?days}{days}d {?}{hours}h {minutes}m" },
+    { "type": "packages", "key": "󰏖", "keyColor": "38;2;137;180;250" },
+    "break",
+
+    // ── desktop ──────────────────────────
+    { "type": "wm", "key": "", "keyColor": "38;2;203;166;247", "format": "{pretty-name}" },
+    { "type": "terminal", "key": "", "keyColor": "38;2;203;166;247", "format": "{pretty-name}" },
+    { "type": "shell", "key": "", "keyColor": "38;2;203;166;247", "format": "{pretty-name}" },
+    { "type": "editor", "key": "", "keyColor": "38;2;203;166;247", "format": "{name} {version}" },
+    { "type": "terminalfont", "key": "", "keyColor": "38;2;203;166;247", "format": "{name}" },
+    { "type": "theme", "key": "󰏘", "keyColor": "38;2;203;166;247", "format": "catppuccin mocha" },
+    "break",
+
+    // ── palette ──────────────────────────
+    {
+      "type": "custom",
+      "format": "{#38;2;243;139;168}● {#38;2;250;179;135}● {#38;2;249;226;175}● {#38;2;166;227;161}● {#38;2;148;226;213}● {#38;2;137;180;250}● {#38;2;203;166;247}● {#38;2;245;194;231}●"
+    }
+  ]
+}
