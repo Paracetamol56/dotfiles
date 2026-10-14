@@ -11,6 +11,8 @@ PanelWindow {
     aboveWindows: false
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Background
+    // Fill the whole screen instead of being pushed down by the bar
+    exclusionMode: ExclusionMode.Ignore
 
     anchors {
         top: true
