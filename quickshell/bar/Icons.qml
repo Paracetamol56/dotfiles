@@ -66,4 +66,35 @@ Singleton {
     readonly property string batteryFull: "\ue055" // battery-full
     readonly property string batteryCharging: "\ue054" // battery-charging
     readonly property string batteryWarning: "\ue3ac" // battery-warning
+    readonly property string skipBack: "\ue15f" // skip-back
+    readonly property string skipForward: "\ue160" // skip-forward
+    readonly property string disc3: "\ue494" // disc-3
+    readonly property string audioLines: "\ue55a" // audio-lines
+    readonly property string sun: "\ue178" // sun
+    readonly property string moon: "\ue11e" // moon
+    readonly property string cloud: "\ue088" // cloud
+    readonly property string cloudSun: "\ue216" // cloud-sun
+    readonly property string cloudMoon: "\ue215" // cloud-moon
+    readonly property string cloudRain: "\ue08e" // cloud-rain
+    readonly property string cloudDrizzle: "\ue08a" // cloud-drizzle
+    readonly property string cloudSnow: "\ue090" // cloud-snow
+    readonly property string cloudLightning: "\ue08c" // cloud-lightning
+    readonly property string cloudFog: "\ue214" // cloud-fog
+    readonly property string wind: "\ue1b0" // wind
+    readonly property string droplets: "\ue0b5" // droplets
+    readonly property string mapPin: "\ue111" // map-pin
+    readonly property string scan: "\ue257" // scan
+    readonly property string squareDashed: "\ue1cb" // square-dashed
+    readonly property string monitor: "\ue11d" // monitor
+    readonly property string circleStop: "\ue083" // circle-stop
+    readonly property string camera: "\ue064" // camera
+    readonly property string sunrise: "\ue179" // sunrise
+    readonly property string sunset: "\ue17a" // sunset
+    readonly property string telescope: "\ue5c5" // telescope
+    readonly property string sparkles: "\ue412" // sparkles
+    readonly property string hourglass: "\ue296" // hourglass
+    readonly property string compass: "\ue09b" // compass
+    readonly property string sunMoon: "\ue2b2" // sun-moon
+    readonly property string moonStar: "\ue410" // moon-star
+    readonly property string orbit: "\ue3e7" // orbit
 }

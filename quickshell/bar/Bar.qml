@@ -43,7 +43,7 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        radius: 6
+        radius: Theme.radius
         color: Theme.transparentBase
     }
 
@@ -127,14 +127,31 @@ PanelWindow {
     // The Arch button is pinned to the exact middle; the stats hang off its
     // left edge and the clock / updates off its right, whatever their widths.
 
-    // Arch button, the bar's only solid button. Not wired up yet: it will open the dashboard
+    // Arch button, the bar's only solid button: toggles the dashboard on this screen
     Rectangle {
         id: archButton
+
+        readonly property bool active: Panels.dashboardScreen === bar.modelData
+
         implicitWidth: 48
         implicitHeight: Theme.pillHeight
         anchors.centerIn: parent
         radius: height / 2
-        color: Theme.mauve
+        color: active ? Theme.lavender : archMouse.containsMouse ? Qt.lighter(Theme.mauve, 1.08) : Theme.mauve
+
+        Behavior on color {
+            ColorAnimation {
+                duration: Theme.animDuration
+            }
+        }
+
+        MouseArea {
+            id: archMouse
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: Panels.toggleDashboard(bar.modelData)
+        }
 
         BarText {
             anchors.centerIn: parent

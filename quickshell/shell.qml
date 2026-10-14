@@ -5,6 +5,7 @@ import Quickshell.Wayland
 import Quickshell.Widgets
 import "Wallpaper.qml"
 import "bar"
+import "dashboard"
 
 ShellRoot {
   id: root
@@ -15,5 +16,11 @@ ShellRoot {
     model: Quickshell.screens
 
     Bar {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    Dashboard {}
   }
 }

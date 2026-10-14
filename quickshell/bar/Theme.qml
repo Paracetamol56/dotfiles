@@ -36,6 +36,8 @@ Singleton {
     readonly property string fontFamily: "FiraCode Nerd Font"
     readonly property int fontSize: 12
     readonly property int iconSize: 15
+    // Corner radius shared by the bar and the windows it opens
+    readonly property int radius: 6
     readonly property int barHeight: 32
     readonly property int padding: 8
     // Gap between pills, and between the bar edge and the outer pills
