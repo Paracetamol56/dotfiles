@@ -20,11 +20,17 @@ Singleton {
     property real memTotal: 0
     readonly property int memPercent: memTotal > 0 ? Math.round(memUsed / memTotal * 100) : 0
 
-    // Wi-Fi and updates, from the scripts carried over from waybar
+    // Wi-Fi, from the script carried over from waybar
     property string wifiIcon: "\u{f092e}"
     property string wifiTooltip: ""
-    property bool updatesAvailable: false
-    property string updatesTooltip: "Checking for updates…"
+
+    // Pending updates: [{ name, from, to, aur }]
+    property var updateList: []
+    readonly property bool checkingUpdates: updates.running
+    property date updatesCheckedAt
+    readonly property bool updatesAvailable: updateList.length > 0
+    readonly property int aurUpdates: updateList.filter(u => u.aur).length
+    readonly property string updatesTooltip: updatesAvailable ? `${updateList.length} update${updateList.length > 1 ? "s" : ""} available` : "Packages are up to date"
 
     // Idle inhibitor toggle ("presentation mode")
     property bool presentationMode: false
@@ -145,16 +151,19 @@ Singleton {
         onTriggered: root.checkUpdates()
     }
 
+    // Repo updates from checkupdates, AUR ones from paru, tagged; lines are "name old -> new"
     Process {
         id: updates
-        command: [Theme.scripts + "/system-update.sh"]
+        command: ["sh", "-c", "checkupdates 2>/dev/null; paru -Qua 2>/dev/null | sed 's/$/ aur/'"]
         stdout: StdioCollector {
             onStreamFinished: {
-                try {
-                    const j = JSON.parse(text);
-                    root.updatesAvailable = j.text !== "\u{f0e1f}";
-                    root.updatesTooltip = j.tooltip;
-                } catch (e) {}
+                root.updateList = text.split("\n").map(l => /^(\S+) (\S+) -> (\S+)( aur)?$/.exec(l.trim())).filter(m => m).map(m => ({
+                            name: m[1],
+                            from: m[2],
+                            to: m[3],
+                            aur: !!m[4]
+                        }));
+                root.updatesCheckedAt = new Date();
             }
         }
     }

@@ -97,4 +97,25 @@ Singleton {
     readonly property string sunMoon: "\ue2b2" // sun-moon
     readonly property string moonStar: "\ue410" // moon-star
     readonly property string orbit: "\ue3e7" // orbit
+    readonly property string refreshCw: "\ue145" // refresh-cw
+    readonly property string download: "\ue0b2" // download
+    readonly property string lock: "\ue10b" // lock
+    readonly property string logOut: "\ue10e" // log-out
+    readonly property string snowflake: "\ue165" // snowflake
+    readonly property string rotateCcw: "\ue148" // rotate-ccw
+    readonly property string mouse: "\ue28e" // mouse
+    readonly property string keyboard: "\ue284" // keyboard
+    readonly property string smartphone: "\ue163" // smartphone
+    readonly property string speaker: "\ue166" // speaker
+    readonly property string watch: "\ue1ad" // watch
+    readonly property string laptop: "\ue1cd" // laptop
+    readonly property string search: "\ue151" // search
+    readonly property string x: "\ue1b2" // x
+    readonly property string loaderCircle: "\ue10a" // loader-circle
+    readonly property string ethernetPort: "\ue620" // ethernet-port
+    readonly property string network: "\ue125" // network
+    readonly property string mic: "\ue118" // mic
+    readonly property string micOff: "\ue119" // mic-off
+    readonly property string check: "\ue06c" // check
+    readonly property string audioWaveform: "\ue55b" // audio-waveform
 }

@@ -5,30 +5,100 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Hyprland
 
-// Which popups are open, shared by the bar and the windows it opens
+// Which modal is open (one at a time) and on which screen, shared by the bar and the modals
 Singleton {
-    // Screen the dashboard is open on, or null when closed
-    property var dashboardScreen: null
+    id: root
 
-    function toggleDashboard(screen) {
-        dashboardScreen = dashboardScreen === screen ? null : screen;
+    // Name of the open modal ("dashboard", "calendar", "updates", "power", "network", "bluetooth", "audio", "launcher"), or "" when none is
+    property string current: ""
+    property var screen: null
+
+    function isOpen(name, s) {
+        return current === name && screen === s;
     }
 
-    function closeDashboard() {
-        dashboardScreen = null;
+    function toggle(name, s) {
+        if (isOpen(name, s))
+            return close();
+        current = name;
+        screen = s;
     }
 
-    // `qs ipc call dashboard toggle`, e.g. from a Hyprland keybind: closes it wherever
-    // it's open, otherwise opens it on the focused monitor
+    function close() {
+        current = "";
+        screen = null;
+    }
+
+    // For keybinds: closes the modal wherever it's open, otherwise opens it on the focused monitor
+    function toggleFocused(name) {
+        if (current === name)
+            return close();
+        const monitor = Hyprland.focusedMonitor?.name;
+        toggle(name, Quickshell.screens.find(s => s.name === monitor) ?? Quickshell.screens[0]);
+    }
+
+    // `qs ipc call dashboard|calendar|updates|power|network|bluetooth|audio|launcher toggle`
     IpcHandler {
         target: "dashboard"
 
         function toggle(): void {
-            if (dashboardScreen !== null)
-                return closeDashboard();
-            const name = Hyprland.focusedMonitor?.name;
-            const screen = Quickshell.screens.find(s => s.name === name) ?? Quickshell.screens[0];
-            toggleDashboard(screen);
+            root.toggleFocused("dashboard");
+        }
+    }
+
+    IpcHandler {
+        target: "calendar"
+
+        function toggle(): void {
+            root.toggleFocused("calendar");
+        }
+    }
+
+    IpcHandler {
+        target: "updates"
+
+        function toggle(): void {
+            root.toggleFocused("updates");
+        }
+    }
+
+    IpcHandler {
+        target: "power"
+
+        function toggle(): void {
+            root.toggleFocused("power");
+        }
+    }
+
+    IpcHandler {
+        target: "network"
+
+        function toggle(): void {
+            root.toggleFocused("network");
+        }
+    }
+
+    IpcHandler {
+        target: "bluetooth"
+
+        function toggle(): void {
+            root.toggleFocused("bluetooth");
+        }
+    }
+
+    IpcHandler {
+        target: "audio"
+
+        function toggle(): void {
+            root.toggleFocused("audio");
+        }
+    }
+
+    IpcHandler {
+        target: "launcher"
+
+        function toggle(): void {
+            root.toggleFocused("launcher");
         }
     }
 }

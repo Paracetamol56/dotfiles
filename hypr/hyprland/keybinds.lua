@@ -7,13 +7,13 @@ hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
 
 -- --- Rofi --- #
-hl.bind("SUPER + R", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh app"))
+hl.bind("SUPER + R", hl.dsp.exec_cmd("qs ipc call launcher toggle")) -- Quickshell app launcher
 hl.bind("SUPER + V", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh clipboard"))
-hl.bind("SUPER + N", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh network"))
-hl.bind("SUPER + B", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh bluetooth"))
+hl.bind("SUPER + N", hl.dsp.exec_cmd("qs ipc call network toggle")) -- Quickshell Wi-Fi panel
+hl.bind("SUPER + B", hl.dsp.exec_cmd("qs ipc call bluetooth toggle")) -- Quickshell Bluetooth panel
 hl.bind("SUPER + S", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh emoji"))
 hl.bind("SUPER + A", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh audio"))
-hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh power"))
+hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("qs ipc call power toggle")) -- Quickshell power menu
 
 -- --- Hyprland --- #
 hl.bind("SUPER + SHIFT + X", hl.dsp.window.close()) -- was killactive

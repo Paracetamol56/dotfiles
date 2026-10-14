@@ -8,7 +8,7 @@ Widget {
     id: root
 
     function screenshot(mode) {
-        Panels.closeDashboard();
+        Panels.close();
         Quickshell.execDetached(["sh", "-c", `sleep 0.35; exec "${Theme.scripts}/screenshot.sh" ${mode}`]);
     }
 
@@ -53,7 +53,7 @@ Widget {
             label: !Recorder.available ? "Install wf-recorder" : Recorder.recording ? "Stop  " + root.clock(Recorder.elapsed) : "Record area"
             onClicked: {
                 if (!Recorder.recording)
-                    Panels.closeDashboard();
+                    Panels.close();
                 Recorder.toggle();
             }
         }

@@ -1,12 +1,12 @@
 .pragma library
 
 // Sun, moon and planet maths, computed locally. Sun: NOAA's low-precision solar position
-// (sunrise/sunset within a minute of sunrise-sunset.org). Moon: mean synodic month.
+// (sunrise/sunset within a minute of sunrise-sunset.org). Moon: true phase from the main
+// terms of Meeus' lunar longitude (phases within ~1 h of JPL Horizons).
 // Planets: JPL's approximate Keplerian elements (1800–2050), within ~0.1° of JPL Horizons.
 
 const RAD = Math.PI / 180;
-const SYNODIC = 29.530588853; // days between new moons
-const KNOWN_NEW_MOON = Date.UTC(2000, 0, 6, 18, 14);
+const SYNODIC = 29.530588853; // mean days between new moons
 
 // Days since J2000
 function j2000(date) {
@@ -24,12 +24,28 @@ function altAz(ra, dec, date, lat, lon) {
     return { alt: alt / RAD, az: (az / RAD + 360) % 360 };
 }
 
+// Sun's apparent ecliptic longitude (radians) n days after J2000
+function sunLongitude(n) {
+    const L = (280.460 + 0.9856474 * n) % 360;
+    const g = ((357.528 + 0.9856003 * n) % 360) * RAD;
+    return (L + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g)) * RAD;
+}
+
+// Moon's ecliptic longitude (radians) n days after J2000: mean longitude plus the
+// largest periodic terms (equation of centre, evection, variation, annual equation…)
+function moonLongitude(n) {
+    const Lp = 218.3164477 + 13.17639648 * n; // mean longitude
+    const D = (297.8501921 + 12.19074912 * n) * RAD; // mean elongation from the sun
+    const M = (357.5291092 + 0.98560028 * n) * RAD; // sun's mean anomaly
+    const Mp = (134.9633964 + 13.06499295 * n) * RAD; // moon's mean anomaly
+    const F = (93.2720950 + 13.22935024 * n) * RAD; // argument of latitude
+    return (Lp + 6.288774 * Math.sin(Mp) + 1.274027 * Math.sin(2 * D - Mp) + 0.658314 * Math.sin(2 * D) + 0.213618 * Math.sin(2 * Mp) - 0.185116 * Math.sin(M) - 0.114332 * Math.sin(2 * F) + 0.058793 * Math.sin(2 * D - 2 * Mp) + 0.057066 * Math.sin(2 * D - M - Mp) + 0.053322 * Math.sin(2 * D + Mp) + 0.045758 * Math.sin(2 * D - M) - 0.040923 * Math.sin(M - Mp) - 0.034720 * Math.sin(D) - 0.030383 * Math.sin(M + Mp)) * RAD;
+}
+
 // Sun elevation, azimuth and declination (degrees) at `date` seen from lat/lon
 function sun(date, lat, lon) {
     const n = j2000(date);
-    const L = (280.460 + 0.9856474 * n) % 360;
-    const g = ((357.528 + 0.9856003 * n) % 360) * RAD;
-    const lambda = (L + 1.915 * Math.sin(g) + 0.020 * Math.sin(2 * g)) * RAD;
+    const lambda = sunLongitude(n);
     const eps = (23.439 - 0.0000004 * n) * RAD;
     const dec = Math.asin(Math.sin(eps) * Math.sin(lambda));
     const ra = Math.atan2(Math.cos(eps) * Math.sin(lambda), Math.cos(lambda));
@@ -85,10 +101,13 @@ function dayLength(date, lat, lon) {
     return up && down ? (down - up) / 60000 : 0; // minutes
 }
 
-// Moon: age in days, illuminated fraction, waxing?, phase name, days to next full / new
+// Moon: age in days, illuminated fraction, waxing?, phase name, days to next full / new.
+// The age comes from the true sun–moon elongation (0° new, 180° full)
 function moon(date) {
-    const age = (((date.getTime() - KNOWN_NEW_MOON) / 86400000) % SYNODIC + SYNODIC) % SYNODIC;
-    const illumination = (1 - Math.cos(2 * Math.PI * age / SYNODIC)) / 2;
+    const n = j2000(date);
+    const elongation = ((moonLongitude(n) - sunLongitude(n)) / RAD % 360 + 360) % 360;
+    const age = elongation / 360 * SYNODIC;
+    const illumination = (1 - Math.cos(elongation * RAD)) / 2;
     const names = ["New Moon", "Waxing Crescent", "First Quarter", "Waxing Gibbous", "Full Moon", "Waning Gibbous", "Last Quarter", "Waning Crescent"];
     const name = names[Math.floor((age / SYNODIC) * 8 + 0.5) % 8];
     return {

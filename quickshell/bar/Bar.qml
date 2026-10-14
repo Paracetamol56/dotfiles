@@ -61,7 +61,7 @@ PanelWindow {
             iconColor: Theme.mauve
             clickable: true
             tooltip: "Applications"
-            onClicked: bar.run(Theme.rofi + " app")
+            onClicked: Panels.toggle("launcher", bar.modelData)
         }
 
         // Workspaces: the active one is mauve, with an underline that slides to it
@@ -131,7 +131,7 @@ PanelWindow {
     Rectangle {
         id: archButton
 
-        readonly property bool active: Panels.dashboardScreen === bar.modelData
+        readonly property bool active: Panels.isOpen("dashboard", bar.modelData)
 
         implicitWidth: 48
         implicitHeight: Theme.pillHeight
@@ -150,7 +150,7 @@ PanelWindow {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: Qt.PointingHandCursor
-            onClicked: Panels.toggleDashboard(bar.modelData)
+            onClicked: Panels.toggle("dashboard", bar.modelData)
         }
 
         BarText {
@@ -221,25 +221,27 @@ PanelWindow {
                     tooltip: "Standard Time: " + Qt.formatTime(clock.date, "hh:mm AP")
                 }
 
-                // Date
+                // Date: opens the calendar modal; lavender while it's open
                 Module {
+                    readonly property bool active: Panels.isOpen("calendar", bar.modelData)
+
                     icon: Icons.calendar
                     iconColor: Theme.lavender
                     text: Qt.formatDate(clock.date, "MM-dd")
+                    textColor: active ? Theme.lavender : Theme.text
                     clickable: true
-                    tooltip: Calendar.month(clock.date)
-                    tooltipFormat: Text.RichText
+                    onClicked: Panels.toggle("calendar", bar.modelData)
                 }
             }
 
             Group {
-                // System updates
+                // System updates: opens the updates modal
                 Module {
                     icon: Stats.updatesAvailable ? Icons.packagePlus : Icons.packageCheck
-                    iconColor: Stats.updatesAvailable ? Theme.peach : Theme.green
+                    iconColor: Panels.isOpen("updates", bar.modelData) ? Theme.lavender : Stats.updatesAvailable ? Theme.peach : Theme.green
                     clickable: true
                     tooltip: Stats.updatesTooltip
-                    onClicked: Stats.runUpgrade()
+                    onClicked: Panels.toggle("updates", bar.modelData)
                 }
             }
     }
@@ -299,10 +301,10 @@ PanelWindow {
                 readonly property bool online: Stats.wifiIcon in glyphs
 
                 icon: glyphs[Stats.wifiIcon] ?? Icons.wifiOff
-                iconColor: online ? Theme.sapphire : Theme.overlay1
+                iconColor: Panels.isOpen("network", bar.modelData) ? Theme.lavender : online ? Theme.sapphire : Theme.overlay1
                 clickable: true
                 tooltip: Stats.wifiTooltip
-                onClicked: bar.run(Theme.rofi + " network")
+                onClicked: Panels.toggle("network", bar.modelData)
                 onRightClicked: bar.run("kitty --title 'Network Manager TUI' bash -c nmtui")
             }
 
@@ -312,10 +314,10 @@ PanelWindow {
                 readonly property var connected: Bluetooth.devices.values.filter(d => d.connected)
 
                 icon: !adapter?.enabled ? Icons.bluetoothOff : connected.length ? Icons.bluetoothConnected : Icons.bluetooth
-                iconColor: !adapter?.enabled ? Theme.overlay1 : Theme.blue
+                iconColor: Panels.isOpen("bluetooth", bar.modelData) ? Theme.lavender : !adapter?.enabled ? Theme.overlay1 : Theme.blue
                 clickable: true
                 tooltip: !adapter?.enabled ? "Bluetooth Disabled" : [`${connected.length} connected`].concat(connected.map(d => d.batteryAvailable ? `${d.name}: ${Math.round(d.battery * 100)}%` : d.name)).join("\n")
-                onClicked: bar.run(Theme.rofi + " bluetooth")
+                onClicked: Panels.toggle("bluetooth", bar.modelData)
                 onRightClicked: bar.run("kitty --title 'Bluetooth TUI' bash -c bluetui")
             }
         }
@@ -337,14 +339,15 @@ PanelWindow {
                 minWidth: 76
                 clickable: true
                 icon: muted ? Icons.volumeX : headphones ? Icons.headphones : vol === 0 ? Icons.volume : vol < 50 ? Icons.volume1 : Icons.volume2
-                iconColor: muted ? Theme.overlay1 : Theme.mauve
+                iconColor: Panels.isOpen("audio", bar.modelData) ? Theme.lavender : muted ? Theme.overlay1 : Theme.mauve
                 text: vol + "%"
                 textColor: muted ? Theme.overlay1 : Theme.text
                 tooltip: "Device: " + (sink?.description ?? "none")
-                onClicked: if (sink?.audio) sink.audio.muted = !sink.audio.muted
+                // Click: sound panel; right-click: mute; scroll: volume
+                onClicked: Panels.toggle("audio", bar.modelData)
+                onRightClicked: Audio.toggleMute(sink)
                 onScrolled: steps => {
-                    if (sink?.audio)
-                        sink.audio.volume = Math.max(0, Math.min(1, (vol + steps * 2) / 100));
+                    Audio.setVolume(sink, (vol + steps * 2) / 100); // via wpctl, capped at 150% like the sound panel
                 }
             }
 
@@ -370,13 +373,13 @@ PanelWindow {
             }
         }
 
-        // Power menu
+        // Power menu: opens the power modal (also SUPER + Backspace)
         Module {
             icon: Icons.power
-            iconColor: Theme.red
+            iconColor: Panels.isOpen("power", bar.modelData) ? Theme.lavender : Theme.red
             clickable: true
             tooltip: "Power"
-            onClicked: bar.run(Theme.rofi + " power")
+            onClicked: Panels.toggle("power", bar.modelData)
         }
     }
 }

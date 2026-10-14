@@ -72,7 +72,7 @@ Widget {
                     cursorShape: Qt.PointingHandCursor
                     onClicked: {
                         app.entry.execute();
-                        Panels.closeDashboard();
+                        Panels.close();
                     }
                 }
             }

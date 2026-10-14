@@ -23,4 +23,46 @@ ShellRoot {
 
     Dashboard {}
   }
+
+  Variants {
+    model: Quickshell.screens
+
+    CalendarModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    UpdatesModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    PowerModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    NetworkModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    BluetoothModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    AudioModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    LauncherModal {}
+  }
 }
