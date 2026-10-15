@@ -46,7 +46,8 @@ sudo pacman -S thunar discord signal-desktop obsidian vlc syncthing docker docke
 ```
 #### AUR packages
 ```bash
-paru -S zen-browser-bin spotify jellyfin-tui qimgv-git
+paru -S zen-browser-bin spotify jellyfin-tui qimgv-git catppuccin-gtk-theme-mocha catppuccin-cursors-mocha
+~/.config/hypr/scripts/gtktheme.sh   # GTK theme, icons, cursor, font
 ```
 
 ### Shell

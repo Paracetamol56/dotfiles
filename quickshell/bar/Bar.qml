@@ -34,6 +34,8 @@ PanelWindow {
     implicitHeight: Theme.barHeight
     color: "transparent"
     WlrLayershell.namespace: "quickshell-bar"
+    // Hidden in zen mode (services/Zen.qml)
+    visible: !Zen.active
 
     function run(cmd) {
         Quickshell.execDetached(["sh", "-c", cmd]);

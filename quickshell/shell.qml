@@ -24,6 +24,7 @@ import qs.panels.lock
 import qs.panels.overview
 import qs.panels.wallpaper
 import qs.panels.eyerest
+import qs.panels.zen
 
 ShellRoot {
   id: root
@@ -146,6 +147,13 @@ ShellRoot {
     model: Quickshell.screens
 
     Overview {}
+  }
+
+  // Zen mode's black backdrop (services/Zen.qml, SUPER + SHIFT + Z)
+  Variants {
+    model: Quickshell.screens
+
+    ZenWindow {}
   }
 
   // Eye-rest reminder every 30 minutes (services/EyeRest.qml)
