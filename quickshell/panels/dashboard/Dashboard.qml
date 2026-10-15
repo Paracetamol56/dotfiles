@@ -51,6 +51,13 @@ Modal {
         }
 
         Button {
+            icon: EyeRest.enabled ? Icons.eye : Icons.eyeOff
+            tooltip: EyeRest.enabled ? `Eye-rest reminder: on (every ${EyeRest.intervalMinutes} min)` : "Eye-rest reminder: off"
+            checked: EyeRest.enabled
+            onClicked: EyeRest.toggle()
+        }
+
+        Button {
             icon: Icons.coffee
             tooltip: Stats.presentationMode ? "Stay awake: on (no idle, lock or sleep)" : "Stay awake: off"
             checked: Stats.presentationMode

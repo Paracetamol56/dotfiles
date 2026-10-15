@@ -23,6 +23,7 @@ import qs.panels.polkit
 import qs.panels.lock
 import qs.panels.overview
 import qs.panels.wallpaper
+import qs.panels.eyerest
 
 ShellRoot {
   id: root
@@ -145,6 +146,13 @@ ShellRoot {
     model: Quickshell.screens
 
     Overview {}
+  }
+
+  // Eye-rest reminder every 30 minutes (services/EyeRest.qml)
+  Variants {
+    model: Quickshell.screens
+
+    EyeRestWindow {}
   }
 
   // Session lock (one instance; it creates a surface per screen)
