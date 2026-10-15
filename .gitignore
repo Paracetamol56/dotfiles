@@ -20,10 +20,15 @@
 !/nvim/
 !/quickshell/
 !/qimgv/
-!/rofi/
+!/qt6ct/
+!/theme/
 !/waybar/
+!/zsh/
 
 !/starship.toml
 
 gtk-3.0/bookmarks
 /qimgv/savedState.conf
+
+# API tokens for Quickshell widgets
+quickshell/secrets/

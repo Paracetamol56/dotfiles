@@ -3,10 +3,10 @@
 hl.config({
 	input = {
 		-- Keyboard
-		kb_layout = "fr",
-		kb_variant = "",
+		kb_layout = "fr,us",
+		kb_variant = ",",
 		kb_model = "",
-		kb_options = "",
+		kb_options = "caps:escape",
 		kb_rules = "",
 
 		-- Mouse

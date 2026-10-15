@@ -9,7 +9,7 @@ hl.config({
         
         -- Colors
         col = {
-            active_border = mauve,
+            active_border = accent,
             inactive_border = blue,
         }
     },

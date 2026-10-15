@@ -6,14 +6,15 @@ hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
 
--- --- Rofi --- #
-hl.bind("SUPER + R", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh app"))
-hl.bind("SUPER + V", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh clipboard"))
-hl.bind("SUPER + N", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh network"))
-hl.bind("SUPER + B", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh bluetooth"))
-hl.bind("SUPER + S", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh emoji"))
-hl.bind("SUPER + A", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh audio"))
-hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh power"))
+-- --- Quickshell panels --- #
+hl.bind("SUPER + R", hl.dsp.exec_cmd("qs ipc call launcher toggle")) -- Quickshell app launcher
+hl.bind("SUPER + V", hl.dsp.exec_cmd("qs ipc call clipboard toggle")) -- Quickshell clipboard history
+hl.bind("SUPER + N", hl.dsp.exec_cmd("qs ipc call network toggle")) -- Quickshell Wi-Fi panel
+hl.bind("SUPER + B", hl.dsp.exec_cmd("qs ipc call bluetooth toggle")) -- Quickshell Bluetooth panel
+hl.bind("SUPER + S", hl.dsp.exec_cmd("qs ipc call emoji toggle")) -- Quickshell emoji picker
+hl.bind("SUPER + A", hl.dsp.exec_cmd("qs ipc call audio toggle")) -- Quickshell sound panel
+hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("qs ipc call power toggle")) -- Quickshell power menu
+hl.bind("SUPER + Tab", hl.dsp.exec_cmd("qs ipc call overview toggle")) -- Quickshell window overview
 
 -- --- Hyprland --- #
 hl.bind("SUPER + SHIFT + X", hl.dsp.window.close()) -- was killactive
@@ -28,14 +29,19 @@ hl.bind("PRINT", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/screenshot.sh area"
 hl.bind("SUPER + I", hl.dsp.exec_cmd("hyprpicker -a"))
 
 -- --- Move/Focus --- #
-hl.bind("SUPER + SHIFT + left", hl.dsp.window.move({ direction = "left" }))
-hl.bind("SUPER + SHIFT + right", hl.dsp.window.move({ direction = "right" }))
-hl.bind("SUPER + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
-hl.bind("SUPER + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
-hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
-hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
-hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
-hl.bind("SUPER + down", hl.dsp.focus({ direction = "down" }))
+-- Move / focus windows: arrow keys or vim keys (H J K L)
+local directions = {
+	{ dir = "left", keys = { "left", "H" } },
+	{ dir = "down", keys = { "down", "J" } },
+	{ dir = "up", keys = { "up", "K" } },
+	{ dir = "right", keys = { "right", "L" } },
+}
+for _, d in ipairs(directions) do
+	for _, key in ipairs(d.keys) do
+		hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ direction = d.dir }))
+		hl.bind("SUPER + " .. key, hl.dsp.focus({ direction = d.dir }))
+	end
+end
 
 -- Workspace binds for French keyboard layout
 local workspace_keys = {
@@ -85,4 +91,4 @@ hl.bind(
 hl.bind("code:211", hl.dsp.exec_cmd("~/.config/hypr/scripts/switch_profile.sh"), { locked = true })
 
 -- Lock Session
-hl.bind("SUPER + L", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock.sh"))
+hl.bind("SUPER + Escape", hl.dsp.exec_cmd("~/.config/hypr/scripts/lock.sh")) -- SUPER + L is focus right
