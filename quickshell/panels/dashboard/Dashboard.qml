@@ -4,7 +4,7 @@ import qs.common
 import qs.components
 import qs.services
 
-// Dashboard: greeting, media, weather, quick launch, capture and astronomy.
+// Dashboard: greeting, media, weather, theme + lighting, capture and astronomy.
 // Opened from the Arch button in the bar.
 Modal {
     id: root
@@ -16,7 +16,10 @@ Modal {
     readonly property string user: Quickshell.env("USER") ?? ""
     readonly property int hour: clock.hours
 
-    title: (hour < 6 ? "Good night" : hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening") + `, <font color="${Theme.mauve}">${user.charAt(0).toUpperCase() + user.slice(1)}</font>`
+    kanji: "計器盤"
+
+    actions: headerActions
+    title: (hour < 6 ? "Good night" : hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening") + `, <font color="${Theme.accent}">${user.charAt(0).toUpperCase() + user.slice(1)}</font>`
     subtitle: Qt.formatDate(clock.date, "dddd d MMMM yyyy")
 
     SystemClock {
@@ -24,9 +27,11 @@ Modal {
         precision: SystemClock.Minutes
     }
 
-    // Quick toggles, top right next to the greeting
+    // Quick toggles, right of the date
     Row {
+        id: headerActions
         anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         spacing: 8
 
@@ -58,6 +63,7 @@ Modal {
             checked: Notifications.dnd
             onClicked: Notifications.toggleDnd()
         }
+
     }
 
     // Widgets, three rows: wide ones on the left, narrow ones filling the right
@@ -80,29 +86,29 @@ Modal {
         height: media.height
     }
 
-    QuickLaunch {
-        id: launch
+    ThemeWidget {
+        id: themes
         blurSource: root.backdrop
         anchors.top: media.bottom
         anchors.topMargin: 16
         anchors.left: media.left
         width: media.width
-        height: 104
+        height: 120
     }
 
     Capture {
         blurSource: root.backdrop
-        anchors.top: launch.top
-        anchors.left: launch.right
+        anchors.top: themes.top
+        anchors.left: themes.right
         anchors.leftMargin: 16
         anchors.right: root.header.right
-        height: launch.height
+        height: themes.height
     }
 
     Astronomy {
         id: astronomy
         blurSource: root.backdrop
-        anchors.top: launch.bottom
+        anchors.top: themes.bottom
         anchors.topMargin: 16
         anchors.left: root.header.left
         anchors.right: root.header.right

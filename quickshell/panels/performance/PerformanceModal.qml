@@ -24,6 +24,8 @@ Modal {
     // g/h = kW × gCO₂/kWh
     readonly property real gramsPerHour: Carbon.intensity >= 0 ? watts / 1000 * Carbon.intensity : -1
 
+    kanji: "性能"
+
     title: "Performance"
     subtitle: `${Stats.cpuModel} · ${Perf.cores.length} cores · load ${Perf.load}`
 
@@ -193,7 +195,7 @@ Modal {
                 label: "VRAM"
                 fraction: Perf.gpu ? Perf.gpu.memUsed / Perf.gpu.memTotal : 0
                 value: Perf.gpu ? `${(Perf.gpu.memUsed / 1024).toFixed(1)} / ${(Perf.gpu.memTotal / 1024).toFixed(0)} GB` : "–"
-                color: Theme.mauve
+                color: Theme.accent
             }
 
             Meter {

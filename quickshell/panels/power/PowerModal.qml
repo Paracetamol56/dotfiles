@@ -25,15 +25,17 @@ Modal {
     property int armed: -1
 
     readonly property var items: [
-        { key: "L", label: "Lock", icon: Icons.lock, color: Theme.mauve, confirm: false, cmd: "hyprlock" },
-        { key: "E", label: "Log out", icon: Icons.logOut, color: Theme.mauve, confirm: true, cmd: "command -v hyprshutdown >/dev/null && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'" },
+        { key: "L", label: "Lock", icon: Icons.lock, color: Theme.accent, confirm: false, cmd: "loginctl lock-session" },
+        { key: "E", label: "Log out", icon: Icons.logOut, color: Theme.accent, confirm: true, cmd: "command -v hyprshutdown >/dev/null && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'" },
         { key: "U", label: "Suspend", icon: Icons.moon, color: Theme.lavender, confirm: true, cmd: "systemctl suspend" },
         { key: "H", label: "Hibernate", icon: Icons.snowflake, color: Theme.sky, confirm: true, cmd: "systemctl hibernate" },
         { key: "R", label: "Reboot", icon: Icons.rotateCcw, color: Theme.peach, confirm: true, cmd: "systemctl reboot" },
         { key: "S", label: "Shut down", icon: Icons.power, color: Theme.red, confirm: true, cmd: "systemctl poweroff" }
     ]
 
-    title: `See you, <font color="${Theme.mauve}">${user.charAt(0).toUpperCase() + user.slice(1)}</font>`
+    kanji: "電源"
+
+    title: "See you"
     subtitle: {
         const s = Math.floor(uptime), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
         const up = (d ? `${d}d ` : "") + (d || h ? `${h}h ` : "") + `${m}m`;

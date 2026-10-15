@@ -84,7 +84,7 @@ Widget {
                 horizontalAlignment: Text.AlignHCenter
                 text: modelData
                 font.pixelSize: 10
-                color: index >= 5 ? Theme.mauve : Theme.subtext0
+                color: index >= 5 ? Theme.accent : Theme.subtext0
             }
         }
     }
@@ -130,7 +130,7 @@ Widget {
                             width: 30
                             height: 30
                             radius: 15
-                            color: cell.isToday ? Theme.mauve : cellMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.6) : "transparent"
+                            color: cell.isToday ? Theme.accent : cellMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.6) : "transparent"
 
                             Behavior on color {
                                 ColorAnimation {

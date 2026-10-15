@@ -8,7 +8,7 @@ Item {
 
     property real value: 0
     property real max: 1
-    property color accent: Theme.mauve
+    property color accent: Theme.accent
     property bool muted: false
     signal moved(real value)
 

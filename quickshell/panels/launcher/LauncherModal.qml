@@ -82,6 +82,8 @@ Modal {
         return list.slice(0, 30);
     }
 
+    kanji: "起動"
+
     title: "Applications"
     subtitle: `${apps.length} apps · maths · "> cmd" runs a command · Tab: recent files`
 
@@ -279,8 +281,8 @@ Modal {
         height: 44
         radius: Theme.radius
         color: Qt.alpha(Theme.crust, 0.6)
-        border.width: 1
-        border.color: search.activeFocus ? Qt.alpha(Theme.mauve, 0.7) : Theme.surface0
+        border.width: search.activeFocus ? 2 : 1
+        border.color: search.activeFocus ? Qt.alpha(Theme.accent, 0.7) : Theme.surface0
 
         Label {
             id: searchIcon
@@ -290,7 +292,7 @@ Modal {
             text: root.commandMode ? Icons.squareTerminal : Icons.search
             font.family: Icons.font
             font.pixelSize: 16
-            color: root.commandMode ? Theme.green : Theme.mauve
+            color: root.commandMode ? Theme.green : Theme.accent
         }
 
         TextInput {
@@ -301,7 +303,7 @@ Modal {
             anchors.rightMargin: 14
             anchors.verticalCenter: parent.verticalCenter
             color: Theme.text
-            selectionColor: Theme.mauve
+            selectionColor: Theme.accent
             font.family: Theme.fontFamily
             font.pixelSize: 15
             clip: true
@@ -357,7 +359,7 @@ Modal {
                 width: ListView.view.width
                 height: 48
                 radius: Theme.radius
-                color: active ? Qt.alpha(Theme.mauve, 0.18) : index === root.current ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
+                color: active ? Qt.alpha(Theme.accent, 0.18) : index === root.current ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
 
                 // App icon, or a Lucide icon for the special rows
                 IconImage {
@@ -377,7 +379,7 @@ Modal {
                     font.family: row.modelData.calc ? Theme.fontFamily : Icons.font
                     font.pixelSize: row.modelData.calc ? 22 : 20
                     font.weight: Font.Bold
-                    color: row.modelData.calc ? Theme.mauve : row.modelData.run ? Theme.green : Theme.blue
+                    color: row.modelData.calc ? Theme.accent : row.modelData.run ? Theme.green : Theme.blue
                 }
 
                 Column {
@@ -471,7 +473,7 @@ Modal {
                 text: Icons.fileClock
                 font.family: Icons.font
                 font.pixelSize: 13
-                color: root.column === 1 ? Theme.mauve : Theme.peach
+                color: root.column === 1 ? Theme.accent : Theme.peach
             }
 
             Label {
@@ -512,7 +514,7 @@ Modal {
                 width: ListView.view.width
                 height: 40
                 radius: Theme.radius
-                color: active ? Qt.alpha(Theme.mauve, 0.18) : fileMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
+                color: active ? Qt.alpha(Theme.accent, 0.18) : fileMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
 
                 Label {
                     id: fileIcon

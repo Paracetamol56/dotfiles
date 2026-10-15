@@ -17,6 +17,9 @@ Modal {
     property bool confirmClear: false
     property real armedAt: 0
 
+    kanji: "通知"
+
+    actions: headerActions
     title: "Notifications"
     subtitle: Notifications.dnd ? `Do Not Disturb · ${count} in history` : count ? `${count} notification${count > 1 ? "s" : ""}` : "All caught up"
 
@@ -27,9 +30,11 @@ Modal {
         }
     }
 
-    // Do Not Disturb + Clear all, top right
+    // Do Not Disturb + Clear all, right of the subtitle
     Row {
+        id: headerActions
         anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         spacing: 8
 
@@ -68,15 +73,14 @@ Modal {
         onTriggered: root.confirmClear = false
     }
 
-    Widget {
+    // Straight on the panel, no card around it
+    Item {
         id: list
-        blurSource: root.backdrop
         anchors.top: root.header.bottom
         anchors.topMargin: 24
         anchors.left: root.header.left
         anchors.right: root.header.right
-        height: Math.min(Math.max(view.contentHeight, 90), 520) + padding * 2
-        padding: 8
+        height: Math.min(Math.max(view.contentHeight, 90), 520)
 
         Column {
             visible: root.count === 0

@@ -5,6 +5,7 @@ import Quickshell.Wayland
 import Quickshell.Widgets
 import "Wallpaper.qml"
 import qs.bar
+import qs.services
 import qs.panels.dashboard
 import qs.panels.calendar
 import qs.panels.launcher
@@ -18,11 +19,25 @@ import qs.panels.clipboard
 import qs.panels.emoji
 import qs.panels.vpn
 import qs.panels.notifications
+import qs.panels.polkit
+import qs.panels.lock
+import qs.panels.overview
+import qs.panels.wallpaper
 
 ShellRoot {
   id: root
 
+  // Start the polkit agent with the shell (singletons are otherwise created on first use)
+  readonly property bool polkitReady: Polkit.registered
+
   // Wallpaper {}
+
+  // Desktop wallpaper (replaces hyprpaper)
+  Variants {
+    model: Quickshell.screens
+
+    WallpaperWindow {}
+  }
 
   Variants {
     model: Quickshell.screens
@@ -113,4 +128,25 @@ ShellRoot {
 
     NotificationPopups {}
   }
+
+  Variants {
+    model: Quickshell.screens
+
+    OsdPopup {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    PolkitPopup {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    Overview {}
+  }
+
+  // Session lock (one instance; it creates a surface per screen)
+  LockScreen {}
 }

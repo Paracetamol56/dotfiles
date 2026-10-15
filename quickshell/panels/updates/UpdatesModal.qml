@@ -14,12 +14,17 @@ Modal {
 
     readonly property int count: Stats.updateList.length
 
-    title: count ? `<font color="${Theme.mauve}">${count}</font> update${count > 1 ? "s" : ""} available` : "Up to date"
+    kanji: "更新"
+
+    actions: headerActions
+    title: count ? `<font color="${Theme.accent}">${count}</font> update${count > 1 ? "s" : ""} available` : "Up to date"
     subtitle: (Stats.checkingUpdates ? "Checking…" : count ? `${count - Stats.aurUpdates} from the repos · ${Stats.aurUpdates} from the AUR` : "Nothing to upgrade") + (Stats.updatesCheckedAt.getTime() ? ` · checked at ${Qt.formatTime(Stats.updatesCheckedAt, "HH:mm")}` : "")
 
-    // Refresh + update, top right next to the title
+    // Refresh + update, right of the subtitle
     Row {
+        id: headerActions
         anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         spacing: 8
 

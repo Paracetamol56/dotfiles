@@ -102,7 +102,7 @@ Rectangle {
                 text: root.critical ? Icons.bellRing : Icons.bell
                 font.family: Icons.font
                 font.pixelSize: 20
-                color: root.critical ? Theme.red : Theme.mauve
+                color: root.critical ? Theme.red : Theme.accent
             }
         }
 
@@ -178,7 +178,7 @@ Rectangle {
                     width: parent.width * Math.max(0, root.progress)
                     height: parent.height
                     radius: parent.radius
-                    color: Theme.mauve
+                    color: Theme.accent
                 }
             }
 

@@ -63,6 +63,8 @@ Modal {
     readonly property bool wide: tab === "Kaomoji"
     readonly property int columns: wide ? 3 : Math.floor((grid.width - grid.padding * 2) / 48)
 
+    kanji: "絵文字"
+
     title: "Emoji"
     subtitle: root.categories.length ? `${allEmoji.length} emoji · ${allKaomoji.length} kaomoji` : "Loading…"
 
@@ -132,8 +134,8 @@ Modal {
         height: 44
         radius: Theme.radius
         color: Qt.alpha(Theme.crust, 0.6)
-        border.width: 1
-        border.color: search.activeFocus ? Qt.alpha(Theme.mauve, 0.7) : Theme.surface0
+        border.width: search.activeFocus ? 2 : 1
+        border.color: search.activeFocus ? Qt.alpha(Theme.accent, 0.7) : Theme.surface0
 
         Label {
             id: searchIcon
@@ -143,7 +145,7 @@ Modal {
             text: Icons.search
             font.family: Icons.font
             font.pixelSize: 16
-            color: Theme.mauve
+            color: Theme.accent
         }
 
         TextInput {
@@ -154,7 +156,7 @@ Modal {
             anchors.rightMargin: 14
             anchors.verticalCenter: parent.verticalCenter
             color: Theme.text
-            selectionColor: Theme.mauve
+            selectionColor: Theme.accent
             font.family: Theme.fontFamily
             font.pixelSize: 15
             clip: true
@@ -199,7 +201,7 @@ Modal {
                 width: modelData.key === "Kaomoji" ? 64 : 44
                 height: 36
                 radius: Theme.radius
-                color: active ? Qt.alpha(Theme.mauve, 0.25) : tabMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : Qt.alpha(Theme.surface0, 0.4)
+                color: active ? Qt.alpha(Theme.accent, 0.25) : tabMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : Qt.alpha(Theme.surface0, 0.4)
 
                 Text {
                     anchors.centerIn: parent
@@ -248,14 +250,14 @@ Modal {
                 width: chipLabel.implicitWidth + 20
                 height: 26
                 radius: 13
-                color: active ? Qt.alpha(Theme.mauve, 0.25) : chipMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : Qt.alpha(Theme.surface0, 0.4)
+                color: active ? Qt.alpha(Theme.accent, 0.25) : chipMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : Qt.alpha(Theme.surface0, 0.4)
 
                 Label {
                     id: chipLabel
                     anchors.centerIn: parent
                     text: chip.modelData.name
                     font.pixelSize: 11
-                    color: chip.active ? Theme.mauve : Theme.subtext0
+                    color: chip.active ? Theme.accent : Theme.subtext0
                 }
 
                 MouseArea {
@@ -313,7 +315,7 @@ Modal {
                     anchors.fill: parent
                     anchors.margins: 2
                     radius: Theme.radius
-                    color: cell.active ? Qt.alpha(Theme.mauve, 0.25) : cellMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : "transparent"
+                    color: cell.active ? Qt.alpha(Theme.accent, 0.25) : cellMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.5) : "transparent"
                 }
 
                 Text {

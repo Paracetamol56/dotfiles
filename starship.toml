@@ -2,11 +2,11 @@
 
 # Catppuccin Mocha powerline — two lines, mirrors the old p10k "rainbow" layout
 add_newline = true
-palette = "catppuccin_mocha"
+palette = "catppuccin"
 
 format = """
 $os\
-[](fg:mauve bg:blue)\
+[](fg:accent bg:blue)\
 $directory\
 [](fg:blue bg:green)\
 $git_branch\
@@ -34,7 +34,7 @@ $time"""
 
 [os]
 disabled = false
-style = "fg:crust bg:mauve"
+style = "fg:crust bg:accent"
 format = "[ $symbol ]($style)"
 
 [os.symbols]
@@ -117,7 +117,7 @@ format = "[$symbol$context ](sapphire)"
 
 # user@host only shows over SSH, like p10k's context segment
 [username]
-style_user = "mauve"
+style_user = "accent"
 format = "[$user]($style)"
 
 [hostname]
@@ -131,7 +131,7 @@ format = "[ $time](overlay1)"
 
 # ── palette ─────────────────────────────────────────
 
-[palettes.catppuccin_mocha]
+[palettes.catppuccin]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
@@ -158,4 +158,5 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
+accent = "#fab387"
 

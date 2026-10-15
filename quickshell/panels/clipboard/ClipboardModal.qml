@@ -31,6 +31,9 @@ Modal {
         return q ? entries.filter(e => e.text.toLowerCase().includes(q)) : entries;
     }
 
+    kanji: "複写"
+
+    actions: clear
     title: "Clipboard"
     subtitle: `${entries.length} entries · Enter copies · Delete removes`
 
@@ -94,20 +97,19 @@ Modal {
         onExited: root.refresh()
     }
 
-    // ── Search + clear ───────────────────────────────────
+    // ── Search ───────────────────────────────────────────
 
     Rectangle {
         id: searchBox
         anchors.top: root.header.bottom
         anchors.topMargin: 20
         anchors.left: root.header.left
-        anchors.right: clear.left
-        anchors.rightMargin: 10
+        anchors.right: root.header.right
         height: 44
         radius: Theme.radius
         color: Qt.alpha(Theme.crust, 0.6)
-        border.width: 1
-        border.color: search.activeFocus ? Qt.alpha(Theme.mauve, 0.7) : Theme.surface0
+        border.width: search.activeFocus ? 2 : 1
+        border.color: search.activeFocus ? Qt.alpha(Theme.accent, 0.7) : Theme.surface0
 
         Label {
             id: searchIcon
@@ -117,7 +119,7 @@ Modal {
             text: Icons.search
             font.family: Icons.font
             font.pixelSize: 16
-            color: Theme.mauve
+            color: Theme.accent
         }
 
         TextInput {
@@ -128,7 +130,7 @@ Modal {
             anchors.rightMargin: 14
             anchors.verticalCenter: parent.verticalCenter
             color: Theme.text
-            selectionColor: Theme.mauve
+            selectionColor: Theme.accent
             font.family: Theme.fontFamily
             font.pixelSize: 15
             clip: true
@@ -156,15 +158,16 @@ Modal {
         }
     }
 
-    // Wipe everything: a first click arms it, a second, separate click (after 0.6 s, within
-    // 4 s) confirms. Clicks in between are ignored, so a double-click can't wipe anything.
+    // Wipe everything, right of the subtitle like the notifications' Clear all: a first click
+    // arms it, a second, separate click (after 0.6 s, within 4 s) confirms. Clicks in between
+    // are ignored, so a double-click can't wipe anything.
     Button {
         id: clear
-        anchors.verticalCenter: searchBox.verticalCenter
+        anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
-        height: 44
-        icon: Icons.x
-        text: root.confirmClear ? "Click again to delete all" : "Clear"
+        icon: Icons.trash2
+        text: root.confirmClear ? "Click again" : ""
         checked: root.confirmClear
         enabled: root.entries.length > 0
         tooltip: "Delete the whole clipboard history (can't be undone)"
@@ -229,7 +232,7 @@ Modal {
                 width: ListView.view.width
                 height: isImage ? 84 : 40
                 radius: Theme.radius
-                color: active ? Qt.alpha(Theme.mauve, 0.18) : rowMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
+                color: active ? Qt.alpha(Theme.accent, 0.18) : rowMouse.containsMouse ? Qt.alpha(Theme.surface1, 0.35) : "transparent"
 
                 // Decode the image once into the cache, then show it
                 Process {

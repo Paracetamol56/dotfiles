@@ -50,7 +50,7 @@ Widget {
             height: parent.height - 46 - parent.spacing
             horizontal: true
             enabled: Recorder.available
-            accent: Recorder.recording ? Theme.red : Theme.mauve
+            accent: Recorder.recording ? Theme.red : Theme.accent
             icon: Recorder.recording ? Icons.circleStop : Icons.video
             label: !Recorder.available ? "Install wf-recorder" : Recorder.recording ? "Stop  " + root.clock(Recorder.elapsed) : "Record area"
             onClicked: {
@@ -69,7 +69,7 @@ Widget {
         property string label
         property bool horizontal: false
         property bool enabled: true
-        property color accent: Theme.mauve
+        property color accent: Theme.accent
         signal clicked
 
         radius: Theme.radius

@@ -105,6 +105,7 @@ Singleton {
     readonly property string rotateCcw: "\ue148" // rotate-ccw
     readonly property string mouse: "\ue28e" // mouse
     readonly property string keyboard: "\ue284" // keyboard
+    readonly property string lightbulb: "\ue1c2" // lightbulb
     readonly property string smartphone: "\ue163" // smartphone
     readonly property string speaker: "\ue166" // speaker
     readonly property string watch: "\ue1ad" // watch

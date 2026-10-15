@@ -14,6 +14,7 @@ hl.bind("SUPER + B", hl.dsp.exec_cmd("qs ipc call bluetooth toggle")) -- Quicksh
 hl.bind("SUPER + S", hl.dsp.exec_cmd("qs ipc call emoji toggle")) -- Quickshell emoji picker
 hl.bind("SUPER + A", hl.dsp.exec_cmd("qs ipc call audio toggle")) -- Quickshell sound panel
 hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("qs ipc call power toggle")) -- Quickshell power menu
+hl.bind("SUPER + Tab", hl.dsp.exec_cmd("qs ipc call overview toggle")) -- Quickshell window overview
 
 -- --- Hyprland --- #
 hl.bind("SUPER + SHIFT + X", hl.dsp.window.close()) -- was killactive

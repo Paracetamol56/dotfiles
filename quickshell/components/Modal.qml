@@ -18,6 +18,8 @@ PanelWindow {
 
     property string title: ""
     property string subtitle: ""
+    // Japanese name, shown at the right end of the title row (like the bar's kanji workspaces)
+    property string kanji: ""
     property int cardWidth: 720
     // "center" (under the bar), "middle" (centre of the screen), or "left" / "right" to line
     // up with that edge of the bar (near its button)
@@ -28,6 +30,10 @@ PanelWindow {
     // Keys other than Esc, for modals with keyboard controls
     signal keyPressed(var event)
     readonly property Item header: header
+    // Buttons/toggles on the subtitle row, right-aligned: anchors.top: root.header.top + topMargin centring on subtitleRow
+    // + anchors.right: root.header.right, and `actions: theItem` so the subtitle stops before them
+    property Item actions: null
+    readonly property Item subtitleRow: subtitleText
     readonly property Item backdrop: backdrop
     // modelData, not screen: screen changes while the window maps, which looped this binding
     readonly property bool open: Panels.current === name && Panels.screen === modelData
@@ -149,9 +155,12 @@ PanelWindow {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.margins: 28
-                spacing: 6
+                spacing: 14
 
                 BarText {
+                    // Stops before the kanji
+                    width: parent.width - (kanjiText.width ? kanjiText.width + 16 : 0)
+                    elide: Text.ElideRight
                     textFormat: Text.StyledText
                     text: root.title
                     font.pixelSize: 24
@@ -160,11 +169,28 @@ PanelWindow {
                 }
 
                 BarText {
+                    id: subtitleText
+                    width: parent.width - (root.actions ? root.actions.width + 16 : 0)
+                    elide: Text.ElideRight
                     text: root.subtitle
                     color: Theme.subtext0
                     font.weight: Font.Normal
                     shadow: false
                 }
+            }
+
+            BarText {
+                id: kanjiText
+                anchors.top: header.top
+                anchors.right: header.right
+                // Collapses when unset, so the title takes the full width
+                width: root.kanji ? implicitWidth : 0
+                text: root.kanji
+                font.family: "Noto Sans CJK JP"
+                font.pixelSize: 24
+                font.weight: Font.Light
+                color: Theme.accent
+                shadow: false
             }
         }
     }

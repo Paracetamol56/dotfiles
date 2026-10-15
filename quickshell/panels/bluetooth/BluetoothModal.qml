@@ -35,6 +35,9 @@ Modal {
         }
     }
 
+    kanji: "接続"
+
+    actions: headerActions
     title: "Bluetooth"
     subtitle: !adapter ? "No adapter found" : !powered ? "Off" : adapter.discovering ? "Scanning for devices…" : connectedCount ? `${connectedCount} device${connectedCount > 1 ? "s" : ""} connected` : "No device connected"
 
@@ -68,9 +71,11 @@ Modal {
         return Icons.bluetooth;
     }
 
-    // Scan + power, top right next to the title
+    // Scan + power, right of the subtitle
     Row {
+        id: headerActions
         anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         spacing: 10
 

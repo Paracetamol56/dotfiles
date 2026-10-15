@@ -29,6 +29,8 @@ Modal {
         objects: [root.sink, root.source].concat(root.sinks, root.sources, root.streams).filter(n => n)
     }
 
+    kanji: "音響"
+
     title: "Sound"
     subtitle: root.sink ? root.deviceName(root.sink) : "No output device"
 
@@ -81,7 +83,7 @@ Modal {
             VolumeRow {
                 node: root.sink
                 icon: root.sink?.audio?.muted ? Icons.volumeX : Icons.volume2
-                accent: Theme.mauve
+                accent: Theme.accent
                 max: 1.5
             }
 

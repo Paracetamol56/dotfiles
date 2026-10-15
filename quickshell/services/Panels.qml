@@ -37,7 +37,7 @@ Singleton {
         toggle(name, Quickshell.screens.find(s => s.name === monitor) ?? Quickshell.screens[0]);
     }
 
-    // `qs ipc call dashboard|calendar|updates|power|network|bluetooth|audio|launcher|performance|clipboard|emoji|vpn|notifications toggle`
+    // `qs ipc call dashboard|calendar|updates|power|network|bluetooth|audio|launcher|performance|clipboard|emoji|vpn|notifications|overview toggle`
     IpcHandler {
         target: "dashboard"
 
@@ -131,6 +131,14 @@ Singleton {
 
         function toggle(): void {
             root.toggleFocused("vpn");
+        }
+    }
+
+    IpcHandler {
+        target: "overview"
+
+        function toggle(): void {
+            root.toggleFocused("overview");
         }
     }
 

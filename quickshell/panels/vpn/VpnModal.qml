@@ -13,6 +13,9 @@ Modal {
     cardWidth: 380
     cardHeight: list.y + list.height + 28
 
+    kanji: "仮想網"
+
+    actions: headerActions
     title: "VPN"
     subtitle: Vpn.activeConnection ? `Connected to ${Vpn.activeConnection.name}` : Vpn.connections.length ? "Not connected" : "No VPN set up yet"
 
@@ -22,9 +25,11 @@ Modal {
         return ({ wireguard: "WireGuard", openvpn: "OpenVPN", openconnect: "OpenConnect", vpnc: "Cisco VPNC", strongswan: "IPsec", l2tp: "L2TP", pptp: "PPTP" })[type] ?? type;
     }
 
-    // Import, top right next to the title
+    // Import, right of the subtitle
     Button {
+        id: headerActions
         anchors.top: root.header.top
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         icon: Icons.plus
         tooltip: "Import a WireGuard (.conf) or OpenVPN (.ovpn) configuration"

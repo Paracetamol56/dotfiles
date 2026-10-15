@@ -25,6 +25,9 @@ Modal {
     property var askingPassword: null
     property string error: ""
 
+    kanji: "無線"
+
+    actions: headerActions
     title: "Wi-Fi"
     subtitle: !powered ? "Off" : active ? `Connected to ${active.name}` : "Not connected"
 
@@ -63,10 +66,11 @@ Modal {
             askingPassword = askingPassword === n ? null : n;
     }
 
-    // Power, top right next to the title
+    // Power, right of the subtitle
     Toggle {
+        id: headerActions
         anchors.top: root.header.top
-        anchors.topMargin: 4
+        anchors.topMargin: root.subtitleRow.y + (root.subtitleRow.height - height) / 2
         anchors.right: root.header.right
         checked: root.powered
         onToggled: Networking.wifiEnabled = !root.powered
@@ -279,8 +283,8 @@ Modal {
                 height: 32
                 radius: Theme.radius
                 color: Qt.alpha(Theme.crust, 0.7)
-                border.width: 1
-                border.color: password.activeFocus ? Theme.mauve : Theme.surface1
+                border.width: password.activeFocus ? 2 : 1
+                border.color: password.activeFocus ? Theme.accent : Theme.surface1
 
                 TextInput {
                     id: password
@@ -290,7 +294,7 @@ Modal {
                     verticalAlignment: TextInput.AlignVCenter
                     echoMode: TextInput.Password
                     color: Theme.text
-                    selectionColor: Theme.mauve
+                    selectionColor: Theme.accent
                     font.family: Theme.fontFamily
                     font.pixelSize: 12
                     clip: true

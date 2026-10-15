@@ -114,7 +114,7 @@ Widget {
                         text: Icons.audioLines
                         font.family: Icons.font
                         font.pixelSize: 12
-                        color: Theme.mauve
+                        color: Theme.accent
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -189,7 +189,7 @@ Widget {
                     width: parent.width * root.ratio
                     height: parent.height
                     radius: parent.radius
-                    color: Theme.mauve
+                    color: Theme.accent
                 }
             }
 
@@ -255,7 +255,7 @@ Widget {
                     width: 32
                     height: 32
                     radius: 16
-                    color: playMouse.containsMouse ? Theme.lavender : Theme.mauve
+                    color: playMouse.containsMouse ? Theme.lavender : Theme.accent
 
                     Behavior on color {
                         ColorAnimation {

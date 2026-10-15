@@ -33,6 +33,9 @@ Item {
         width: Math.min(768, root.width)
         height: 288
         anchors.horizontalCenter: parent.horizontalCenter
+        // Nudged right: the accent half on the left is the brighter one, so a centred blob
+        // looks off-centre
+        anchors.horizontalCenterOffset: 96
         // Raised above top-0 so the glow sits behind the header
         y: -100
         radius: height / 2
@@ -42,7 +45,7 @@ Item {
 
             GradientStop {
                 position: 0
-                color: Qt.alpha(Theme.mauve, 0.25)
+                color: Qt.alpha(Theme.accent, 0.25)
             }
             GradientStop {
                 position: 1
@@ -88,7 +91,7 @@ Item {
 
         DotGrid {
             anchors.fill: parent
-            color: Theme.mauve
+            color: Theme.accent
             dotRadius: 1.5
             // .glow mask: radial-gradient(circle 14rem at var(--x) var(--y), black, transparent).
             // Re-created whenever the cursor moves, which repaints the grid

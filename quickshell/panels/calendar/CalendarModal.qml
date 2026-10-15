@@ -14,7 +14,9 @@ Modal {
 
     readonly property date today: clock.date
 
-    title: Qt.formatDate(today, "dddd d ") + `<font color="${Theme.mauve}">${Qt.formatDate(today, "MMMM")}</font>`
+    kanji: "暦"
+
+    title: Qt.formatDate(today, "dddd d ") + `<font color="${Theme.accent}">${Qt.formatDate(today, "MMMM")}</font>`
     subtitle: {
         const y = today.getFullYear(), doy = Cal.dayOfYear(today), total = Cal.daysInYear(y);
         return `Week ${Cal.isoWeek(today)} · day ${doy} of ${total} · ${total - doy} days left in ${y}`;

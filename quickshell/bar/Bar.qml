@@ -61,7 +61,7 @@ PanelWindow {
         // Launcher
         Module {
             icon: Icons.rocket
-            iconColor: Theme.mauve
+            iconColor: Theme.accent
             clickable: true
             tooltip: "Applications"
             onClicked: Panels.toggle("launcher", bar.modelData)
@@ -92,7 +92,7 @@ PanelWindow {
                         padding: 8
                         minWidth: 26
                         clickable: !active
-                        textColor: active ? Theme.mauve : occupied ? Theme.text : Theme.overlay0
+                        textColor: active ? Theme.accent : occupied ? Theme.text : Theme.overlay0
                         onClicked: Hyprland.dispatch(`hl.dsp.focus({ workspace = ${wsId} })`)
                         onScrolled: steps => {
                             const cur = bar.monitor?.activeWorkspace?.id ?? 1;
@@ -113,7 +113,7 @@ PanelWindow {
                 radius: 1
                 x: (target?.x ?? 0) + ((target?.width ?? 0) - width) / 2
                 anchors.bottom: parent.bottom
-                color: Theme.mauve
+                color: Theme.accent
 
                 Behavior on x {
                     NumberAnimation {
@@ -143,7 +143,7 @@ PanelWindow {
         implicitHeight: Theme.pillHeight
         anchors.centerIn: parent
         radius: height / 2
-        color: active ? Theme.lavender : archMouse.containsMouse ? Qt.lighter(Theme.mauve, 1.08) : Theme.mauve
+        color: active ? Theme.lavender : archMouse.containsMouse ? Qt.lighter(Theme.accent, 1.08) : Theme.accent
 
         Behavior on color {
             ColorAnimation {
@@ -228,7 +228,7 @@ PanelWindow {
                 // Time
                 Module {
                     icon: Icons.clock
-                    iconColor: Theme.mauve
+                    iconColor: Theme.accent
                     text: Qt.formatTime(clock.date, "HH:mm")
                     tooltip: "Standard Time: " + Qt.formatTime(clock.date, "hh:mm AP")
                 }
@@ -392,7 +392,7 @@ PanelWindow {
                 minWidth: 76
                 clickable: true
                 icon: muted ? Icons.volumeX : headphones ? Icons.headphones : vol === 0 ? Icons.volume : vol < 50 ? Icons.volume1 : Icons.volume2
-                iconColor: Panels.isOpen("audio", bar.modelData) ? Theme.lavender : muted ? Theme.overlay1 : Theme.mauve
+                iconColor: Panels.isOpen("audio", bar.modelData) ? Theme.lavender : muted ? Theme.overlay1 : Theme.accent
                 text: vol + "%"
                 textColor: muted ? Theme.overlay1 : Theme.text
                 tooltip: "Device: " + (sink?.description ?? "none")
@@ -420,7 +420,7 @@ PanelWindow {
                 visible: dev?.isLaptopBattery ?? false
                 minWidth: 76
                 icon: charging ? Icons.batteryCharging : pct <= 15 ? Icons.batteryWarning : pct <= 30 ? Icons.batteryLow : pct < 70 ? Icons.batteryMedium : Icons.batteryFull
-                iconColor: charging ? Theme.yellow : pct >= 100 ? Theme.green : pct <= 15 ? Theme.red : pct <= 30 ? Theme.peach : Theme.mauve
+                iconColor: charging ? Theme.yellow : pct >= 100 ? Theme.green : pct <= 15 ? Theme.red : pct <= 30 ? Theme.peach : Theme.accent
                 text: pct + "%"
                 tooltip: charging ? "Charging: " + duration(dev.timeToFull) : "Discharging: " + duration(dev?.timeToEmpty ?? 0)
             }

@@ -284,7 +284,7 @@ Widget {
 
             Reading {
                 icon: Icons.orbit
-                iconColor: Theme.mauve
+                iconColor: Theme.accent
                 label: root.dark ? "Planets" : "Planets " + root.hm(root.planetTime)
                 value: root.planets.length ? root.planets.map(p => `<font color="${root.planetLook[p.name][1]}">${root.planetLook[p.name][0]}</font>`).join("&nbsp;&nbsp;") : "None up"
                 valueFormat: Text.StyledText

@@ -19,7 +19,7 @@ Rectangle {
     height: 30
     radius: Theme.radius
     opacity: enabled ? 1 : 0.4
-    color: filled ? (mouse.containsMouse ? Theme.lavender : Theme.mauve) : checked ? Qt.alpha(Theme.mauve, 0.25) : (mouse.containsMouse ? Qt.alpha(Theme.surface1, 0.8) : Qt.alpha(Theme.surface0, 0.8))
+    color: filled ? (mouse.containsMouse ? Theme.lavender : Theme.accent) : checked ? Qt.alpha(Theme.accent, 0.25) : (mouse.containsMouse ? Qt.alpha(Theme.surface1, 0.8) : Qt.alpha(Theme.surface0, 0.8))
 
     Behavior on color {
         ColorAnimation {
@@ -37,7 +37,7 @@ Rectangle {
             text: button.icon
             font.family: Icons.font
             font.pixelSize: 14
-            color: button.filled ? Theme.base : button.checked ? Theme.mauve : Theme.text
+            color: button.filled ? Theme.base : button.checked ? Theme.accent : Theme.text
         }
 
         Label {

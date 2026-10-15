@@ -11,7 +11,7 @@ Rectangle {
     width: 40
     height: 22
     radius: height / 2
-    color: checked ? Theme.mauve : Qt.alpha(Theme.surface1, 0.9)
+    color: checked ? Theme.accent : Qt.alpha(Theme.surface1, 0.9)
 
     Behavior on color {
         ColorAnimation {
