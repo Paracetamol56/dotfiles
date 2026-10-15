@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell.Hyprland
+import qs.common
 
 // Active window title, rewritten with the same rules as waybar's hyprland/window.
 // Lucide has no brand logos, so each app gets the closest generic icon.

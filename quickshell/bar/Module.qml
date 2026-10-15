@@ -1,4 +1,6 @@
 import QtQuick
+import qs.common
+import qs.components
 
 // One item of the bar: a Lucide icon, a label, a tooltip and mouse actions.
 // No background: clickable items show hover by turning lavender.

@@ -4,8 +4,16 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Widgets
 import "Wallpaper.qml"
-import "bar"
-import "dashboard"
+import qs.bar
+import qs.panels.dashboard
+import qs.panels.calendar
+import qs.panels.launcher
+import qs.panels.power
+import qs.panels.updates
+import qs.panels.network
+import qs.panels.bluetooth
+import qs.panels.audio
+import qs.panels.performance
 
 ShellRoot {
   id: root

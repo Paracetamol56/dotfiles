@@ -6,6 +6,9 @@ import Quickshell.Bluetooth
 import Quickshell.Services.Mpris
 import Quickshell.Services.Pipewire
 import Quickshell.Services.UPower
+import qs.common
+import qs.components
+import qs.services
 
 // Port of the waybar config: launcher + workspaces + title on the left,
 // stats / clock / tray in the centre, media + volume + power on the right.
