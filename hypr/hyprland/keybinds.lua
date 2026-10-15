@@ -8,6 +8,7 @@ hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
 
 -- --- Quickshell panels --- #
 hl.bind("SUPER + R", hl.dsp.exec_cmd("qs ipc call launcher toggle")) -- Quickshell app launcher
+hl.bind("SUPER + Space", hl.dsp.exec_cmd("qs ipc call dashboard toggle")) -- Quickshell dashboard
 hl.bind("SUPER + V", hl.dsp.exec_cmd("qs ipc call clipboard toggle")) -- Quickshell clipboard history
 hl.bind("SUPER + N", hl.dsp.exec_cmd("qs ipc call network toggle")) -- Quickshell Wi-Fi panel
 hl.bind("SUPER + B", hl.dsp.exec_cmd("qs ipc call bluetooth toggle")) -- Quickshell Bluetooth panel
