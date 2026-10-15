@@ -9,7 +9,8 @@ import Quickshell.Io
 Singleton {
     id: root
 
-    readonly property string fallback: Quickshell.env("HOME") + "/Pictures/Wallpapers/walls-catppuccin-mocha/train-sideview.png"
+    // Shipped with the dotfiles (~/.config/assets/wallpapers), so a fresh install has one
+    readonly property string fallback: Quickshell.env("HOME") + "/.config/assets/wallpapers/train-sideview.png"
     property string path: fallback
 
     function set(newPath) {

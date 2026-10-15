@@ -20,7 +20,10 @@
 !/nvim/
 !/quickshell/
 !/qimgv/
+!/qt6ct/
+!/theme/
 !/waybar/
+!/zsh/
 
 !/starship.toml
 

@@ -34,7 +34,7 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 # Desktop
 sudo pacman -S hyprland hypridle hyprlock hyprsunset xdg-desktop-portal-hyprland quickshell
 # Terminal & shell
-sudo pacman -S kitty zsh starship neovim git lazygit btop fastfetch bat eza
+sudo pacman -S kitty zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions starship neovim git lazygit btop fastfetch bat eza
 # Tools used by the Quickshell panels (screenshots, recording, clipboard, media, updates…)
 sudo pacman -S grim slurp wf-recorder wl-clipboard cliphist jq curl playerctl zenity pacman-contrib brightnessctl python-numpy python-fonttools
 # Network, Bluetooth & audio
@@ -49,12 +49,21 @@ sudo pacman -S thunar discord signal-desktop obsidian vlc syncthing docker docke
 paru -S zen-browser-bin spotify jellyfin-tui qimgv-git
 ```
 
+### Shell
+zsh with Oh My Zsh; the config lives in `zsh/zshrc`. Hook it up:
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+echo 'source "$HOME/.config/zsh/zshrc"' > ~/.zshrc
+```
+Inline suggestions from history (→ accepts, Ctrl+→ one word), syntax highlighting, and a Tab
+menu moved through with the arrows.
+
 ### Theme
 Colours come from one place: `theme/theme.json` (Catppuccin flavor + accent). Switch with
 ```bash
 ~/.config/theme/apply.py mocha blue   # flavor: latte frappe macchiato mocha · any Catppuccin accent
 ```
-It regenerates the Hyprland, kitty, btop, starship, fastfetch and Qt (qt6ct) colours; Quickshell follows live, and the RGB lighting (keyboard, mouse, motherboard headers) is set to the accent with OpenRGB.
+It regenerates the Hyprland, kitty, btop, starship, fastfetch, zsh and Qt (qt6ct) colours; Quickshell follows live, and the RGB lighting (keyboard, mouse, motherboard headers) is set to the accent with OpenRGB.
 
 ## 💡 Usage Permission
 
