@@ -7,9 +7,8 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 - **Operating System:** Arch Linux <small>BTW</small>
 - **Window Manager:** Hyprland
 - **Terminal Emulator:** Kitty
-- **Terminal Tools:** Fastfetch, Btop, Jellyfin-TUI, Lazygit
-- **Application Launcher:** Rofi
-- **Status Bar:** Waybar
+- **Terminal Tools:** Fastfetch, Btop, Jellyfin-TUI, Lazygit, Starship
+- **Shell (bar, launcher, panels, notifications):** Quickshell
 - **File Manager:** Thunar
 
 ## 📸 Screenshots
@@ -32,15 +31,22 @@ A curated setup for a sleek and efficient desktop experience using Arch Linux an
 
 #### Stable/Extra packages
 ```bash
-sudo pacman -S git neovim waybar rofi btop dunst firefox docker docker-compose thunar zsh discord bluez bluez-utils brightnessctl signal-desktop neofetch grim blueman vlc hyprpaper syncthing papiru-icon-theme cliphist
+# Desktop
+sudo pacman -S hyprland hypridle hyprlock hyprpaper hyprsunset xdg-desktop-portal-hyprland quickshell
+# Terminal & shell
+sudo pacman -S kitty zsh starship neovim git lazygit btop fastfetch bat eza
+# Tools used by the Quickshell panels (screenshots, recording, clipboard, media, updates…)
+sudo pacman -S grim slurp wf-recorder wl-clipboard cliphist jq curl playerctl zenity pacman-contrib brightnessctl python-numpy python-fonttools
+# Network, Bluetooth & audio
+sudo pacman -S networkmanager bluez bluez-utils blueman bluetui pipewire pipewire-pulse wireplumber
+# Fonts & icons
+sudo pacman -S ttf-firacode-nerd noto-fonts-emoji noto-fonts-cjk papirus-icon-theme
+# Apps
+sudo pacman -S thunar discord signal-desktop obsidian vlc syncthing docker docker-compose
 ```
 #### AUR packages
 ```bash
-yay -S zen-browser obsidian spotify catppuccin-cursors-mocha wl-clipboard qimgv papirus-folders-catppuccin-git gitkraken 
-```
-
-```bash
-papirus-folder -C cat-mocha-mauve
+paru -S zen-browser-bin spotify jellyfin-tui qimgv-git
 ```
 
 ## 💡 Usage Permission
