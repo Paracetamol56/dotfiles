@@ -31,7 +31,7 @@ Modal {
         return q ? entries.filter(e => e.text.toLowerCase().includes(q)) : entries;
     }
 
-    kanji: "複写"
+    kanji: "クリップボード"
 
     actions: clear
     title: "Clipboard"

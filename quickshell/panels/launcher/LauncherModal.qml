@@ -82,7 +82,7 @@ Modal {
         return list.slice(0, 30);
     }
 
-    kanji: "起動"
+    kanji: "アプリ"
 
     title: "Applications"
     subtitle: `${apps.length} apps · maths · "> cmd" runs a command · Tab: recent files`

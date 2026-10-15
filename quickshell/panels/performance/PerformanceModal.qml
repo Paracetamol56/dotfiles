@@ -24,7 +24,7 @@ Modal {
     // g/h = kW × gCO₂/kWh
     readonly property real gramsPerHour: Carbon.intensity >= 0 ? watts / 1000 * Carbon.intensity : -1
 
-    kanji: "性能"
+    kanji: "パフォーマンス"
 
     title: "Performance"
     subtitle: `${Stats.cpuModel} · ${Perf.cores.length} cores · load ${Perf.load}`

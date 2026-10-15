@@ -16,7 +16,7 @@ Modal {
     readonly property string user: Quickshell.env("USER") ?? ""
     readonly property int hour: clock.hours
 
-    kanji: "計器盤"
+    kanji: "ダッシュボード"
 
     actions: headerActions
     title: (hour < 6 ? "Good night" : hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening") + `, <font color="${Theme.accent}">${user.charAt(0).toUpperCase() + user.slice(1)}</font>`

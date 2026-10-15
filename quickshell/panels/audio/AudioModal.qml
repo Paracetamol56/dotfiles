@@ -29,7 +29,7 @@ Modal {
         objects: [root.sink, root.source].concat(root.sinks, root.sources, root.streams).filter(n => n)
     }
 
-    kanji: "音響"
+    kanji: "サウンド"
 
     title: "Sound"
     subtitle: root.sink ? root.deviceName(root.sink) : "No output device"

@@ -17,6 +17,8 @@ Singleton {
     id: root
 
     property bool locked: false
+    // Right password: the surfaces play their outro, then unlockTimer unlocks
+    property bool unlocking: false
     // Shared by every screen's password field
     property string password: ""
     property bool checking: false
@@ -27,6 +29,8 @@ Singleton {
         password = "";
         message = "";
         failed = false;
+        unlocking = false;
+        unlockTimer.stop();
         locked = true;
     }
 
@@ -58,7 +62,8 @@ Singleton {
             if (result === PamResult.Success) {
                 root.password = "";
                 root.message = "";
-                root.locked = false;
+                root.unlocking = true;
+                unlockTimer.restart();
             } else {
                 root.failed = true;
                 root.password = "";
@@ -71,6 +76,17 @@ Singleton {
             root.failed = true;
             root.password = "";
             root.message = "Couldn't check the password";
+        }
+    }
+
+    // Unlocks after the outro. The only unlock path after a right password, so it doesn't
+    // depend on the animation running at all
+    Timer {
+        id: unlockTimer
+        interval: 450
+        onTriggered: {
+            root.locked = false;
+            root.unlocking = false;
         }
     }
 

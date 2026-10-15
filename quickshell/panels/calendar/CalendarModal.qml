@@ -14,7 +14,7 @@ Modal {
 
     readonly property date today: clock.date
 
-    kanji: "暦"
+    kanji: "カレンダー"
 
     title: Qt.formatDate(today, "dddd d ") + `<font color="${Theme.accent}">${Qt.formatDate(today, "MMMM")}</font>`
     subtitle: {

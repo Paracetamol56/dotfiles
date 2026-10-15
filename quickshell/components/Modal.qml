@@ -18,7 +18,7 @@ PanelWindow {
 
     property string title: ""
     property string subtitle: ""
-    // Japanese name, shown at the right end of the title row (like the bar's kanji workspaces)
+    // Japanese name (kanji or kana, as Japanese UIs write it), at the right end of the title row
     property string kanji: ""
     property int cardWidth: 720
     // "center" (under the bar), "middle" (centre of the screen), or "left" / "right" to line
