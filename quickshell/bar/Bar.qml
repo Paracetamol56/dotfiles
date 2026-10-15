@@ -130,12 +130,12 @@ PanelWindow {
     }
 
     // ── Centre ───────────────────────────────────────────
-    // The Arch button is pinned to the exact middle; the stats hang off its
+    // The distro button is pinned to the exact middle; the stats hang off its
     // left edge and the clock / updates off its right, whatever their widths.
 
-    // Arch button, the bar's only solid button: toggles the dashboard on this screen
+    // Distro logo button, the bar's only solid button: toggles the dashboard on this screen
     Rectangle {
-        id: archButton
+        id: distroButton
 
         readonly property bool active: Panels.isOpen("dashboard", bar.modelData)
 
@@ -161,7 +161,7 @@ PanelWindow {
 
         BarText {
             anchors.centerIn: parent
-            text: "\u{f303}" // nf-linux-archlinux
+            text: Distro.icon // the running distribution's logo (services/Distro.qml)
             color: Theme.base
             shadow: false
             font.pixelSize: 16
@@ -170,7 +170,7 @@ PanelWindow {
     }
 
     Group {
-        anchors.right: archButton.left
+        anchors.right: distroButton.left
         anchors.rightMargin: Theme.spacing
         anchors.verticalCenter: parent.verticalCenter
         // CPU temperature
@@ -219,7 +219,7 @@ PanelWindow {
     }
 
     Row {
-        anchors.left: archButton.right
+        anchors.left: distroButton.right
         anchors.leftMargin: Theme.spacing
         anchors.verticalCenter: parent.verticalCenter
         spacing: Theme.spacing
@@ -289,6 +289,38 @@ PanelWindow {
             tooltip: player ? [player.identity, player.trackTitle, player.trackArtist, player.trackAlbum].filter(s => s).join("\n") : ""
             onClicked: player?.togglePlaying()
             onRightClicked: player?.next()
+        }
+
+        // Notifications: bell (crossed out in Do Not Disturb) with an unread badge.
+        // Click opens the notification center, right-click toggles Do Not Disturb.
+        Module {
+            id: bell
+            icon: Notifications.dnd ? Icons.bellOff : Notifications.unread > 0 ? Icons.bellRing : Icons.bell
+            iconColor: Panels.isOpen("notifications", bar.modelData) ? Theme.lavender : Notifications.dnd ? Theme.overlay1 : Notifications.unread > 0 ? Theme.peach : Theme.subtext0
+            clickable: true
+            tooltip: (Notifications.dnd ? "Do Not Disturb · " : "") + (Notifications.unread ? `${Notifications.unread} unread` : "No new notifications")
+            onClicked: Panels.toggle("notifications", bar.modelData)
+            onRightClicked: Notifications.toggleDnd()
+
+            Rectangle {
+                visible: Notifications.unread > 0 && !Notifications.dnd
+                x: bell.width / 2 + 3
+                y: 3
+                width: Math.max(14, badge.implicitWidth + 6)
+                height: 14
+                radius: 7
+                color: Theme.peach
+
+                BarText {
+                    id: badge
+                    anchors.centerIn: parent
+                    text: Notifications.unread > 9 ? "9+" : Notifications.unread
+                    color: Theme.base
+                    shadow: false
+                    font.pixelSize: 9
+                    font.weight: Font.Bold
+                }
+            }
         }
 
         // Idle inhibitor: the coffee cup keeps the screen awake, peach while active

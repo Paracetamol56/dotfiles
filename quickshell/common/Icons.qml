@@ -141,4 +141,8 @@ Singleton {
     readonly property string shieldOff: "\ue15a" // shield-off
     readonly property string plus: "\ue13d" // plus
     readonly property string fileUp: "\ue32a" // file-up
+    readonly property string bell: "\ue059" // bell
+    readonly property string bellOff: "\ue05a" // bell-off
+    readonly property string bellRing: "\ue224" // bell-ring
+    readonly property string trash2: "\ue18e" // trash-2
 }

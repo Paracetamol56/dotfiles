@@ -51,6 +51,13 @@ Modal {
             checked: Stats.presentationMode
             onClicked: Stats.presentationMode = !Stats.presentationMode
         }
+
+        Button {
+            icon: Notifications.dnd ? Icons.bellOff : Icons.bell
+            tooltip: Notifications.dnd ? "Do Not Disturb: on" : "Do Not Disturb: off"
+            checked: Notifications.dnd
+            onClicked: Notifications.toggleDnd()
+        }
     }
 
     // Widgets, three rows: wide ones on the left, narrow ones filling the right

@@ -17,6 +17,7 @@ import qs.panels.performance
 import qs.panels.clipboard
 import qs.panels.emoji
 import qs.panels.vpn
+import qs.panels.notifications
 
 ShellRoot {
   id: root
@@ -99,5 +100,17 @@ ShellRoot {
     model: Quickshell.screens
 
     VpnModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    NotificationModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    NotificationPopups {}
   }
 }
