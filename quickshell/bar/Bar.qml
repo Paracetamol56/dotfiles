@@ -320,6 +320,15 @@ PanelWindow {
                 onRightClicked: bar.run("kitty --title 'Network Manager TUI' bash -c nmtui")
             }
 
+            // VPN: green shield while connected; opens the VPN panel
+            Module {
+                icon: Vpn.connected ? Icons.shieldCheck : Icons.shield
+                iconColor: Panels.isOpen("vpn", bar.modelData) ? Theme.lavender : Vpn.connected ? Theme.green : Theme.overlay1
+                clickable: true
+                tooltip: Vpn.connected ? `VPN: ${Vpn.activeConnection.name}` : "VPN: off"
+                onClicked: Panels.toggle("vpn", bar.modelData)
+            }
+
             // Bluetooth
             Module {
                 readonly property var adapter: Bluetooth.defaultAdapter

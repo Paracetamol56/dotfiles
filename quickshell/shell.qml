@@ -14,6 +14,9 @@ import qs.panels.network
 import qs.panels.bluetooth
 import qs.panels.audio
 import qs.panels.performance
+import qs.panels.clipboard
+import qs.panels.emoji
+import qs.panels.vpn
 
 ShellRoot {
   id: root
@@ -78,5 +81,23 @@ ShellRoot {
     model: Quickshell.screens
 
     PerformanceModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    ClipboardModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    EmojiModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    VpnModal {}
   }
 }

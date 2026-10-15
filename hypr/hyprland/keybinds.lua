@@ -6,13 +6,13 @@ hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("kitty"))
 hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
 hl.bind("SUPER + O", hl.dsp.exec_cmd("obsidian"))
 
--- --- Rofi --- #
+-- --- Quickshell panels --- #
 hl.bind("SUPER + R", hl.dsp.exec_cmd("qs ipc call launcher toggle")) -- Quickshell app launcher
 hl.bind("SUPER + V", hl.dsp.exec_cmd("qs ipc call clipboard toggle")) -- Quickshell clipboard history
 hl.bind("SUPER + N", hl.dsp.exec_cmd("qs ipc call network toggle")) -- Quickshell Wi-Fi panel
 hl.bind("SUPER + B", hl.dsp.exec_cmd("qs ipc call bluetooth toggle")) -- Quickshell Bluetooth panel
 hl.bind("SUPER + S", hl.dsp.exec_cmd("qs ipc call emoji toggle")) -- Quickshell emoji picker
-hl.bind("SUPER + A", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/rofi.sh audio"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("qs ipc call audio toggle")) -- Quickshell sound panel
 hl.bind("SUPER + Backspace", hl.dsp.exec_cmd("qs ipc call power toggle")) -- Quickshell power menu
 
 -- --- Hyprland --- #

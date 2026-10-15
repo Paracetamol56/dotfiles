@@ -137,4 +137,8 @@ Singleton {
     readonly property string fileClock: "\ue315" // file-clock
     readonly property string squareTerminal: "\ue20a" // square-terminal
     readonly property string externalLink: "\ue0b9" // external-link
+    readonly property string shield: "\ue158" // shield
+    readonly property string shieldOff: "\ue15a" // shield-off
+    readonly property string plus: "\ue13d" // plus
+    readonly property string fileUp: "\ue32a" // file-up
 }

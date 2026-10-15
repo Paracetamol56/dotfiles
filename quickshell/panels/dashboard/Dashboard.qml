@@ -31,6 +31,13 @@ Modal {
         spacing: 8
 
         Button {
+          icon: Icons.keyboard
+          text: Keyboard.current.code
+          tooltip: `Keyboard: ${Keyboard.current.name} · click to switch`
+          onClicked: Keyboard.toggle()
+        }
+
+        Button {
             icon: Icons.moon
             tooltip: !NightLight.available ? "Night light · install hyprsunset" : NightLight.enabled ? "Night light: on" : "Night light: off"
             checked: NightLight.enabled
@@ -38,15 +45,6 @@ Modal {
             onClicked: NightLight.toggle()
         }
 
-        // Keyboard layout, shown as FR / US
-        Button {
-            icon: Icons.keyboard
-            text: Keyboard.current.code
-            tooltip: `Keyboard: ${Keyboard.current.name} · click to switch`
-            onClicked: Keyboard.toggle()
-        }
-
-        // Same inhibitor as the coffee cup in the bar
         Button {
             icon: Icons.coffee
             tooltip: Stats.presentationMode ? "Stay awake: on (no idle, lock or sleep)" : "Stay awake: off"
