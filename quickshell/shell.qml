@@ -18,6 +18,7 @@ import qs.panels.performance
 import qs.panels.clipboard
 import qs.panels.emoji
 import qs.panels.vpn
+import qs.panels.battery
 import qs.panels.notifications
 import qs.panels.polkit
 import qs.panels.lock
@@ -117,6 +118,12 @@ ShellRoot {
     model: Quickshell.screens
 
     VpnModal {}
+  }
+
+  Variants {
+    model: Quickshell.screens
+
+    BatteryModal {}
   }
 
   Variants {

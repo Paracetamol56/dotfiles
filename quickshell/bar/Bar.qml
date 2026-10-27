@@ -354,8 +354,9 @@ PanelWindow {
                 onRightClicked: bar.run("kitty --title 'Network Manager TUI' bash -c nmtui")
             }
 
-            // VPN: green shield while connected; opens the VPN panel
+            // VPN: green shield while connected; opens the VPN panel. Hidden with no VPN configured
             Module {
+                visible: Vpn.connections.length > 0
                 icon: Vpn.connected ? Icons.shieldCheck : Icons.shield
                 iconColor: Panels.isOpen("vpn", bar.modelData) ? Theme.lavender : Vpn.connected ? Theme.green : Theme.overlay1
                 clickable: true
@@ -406,7 +407,7 @@ PanelWindow {
                 }
             }
 
-            // Battery, only on machines that have one
+            // Battery, only on machines that have one; opens the battery panel
             Module {
                 id: battery
 
@@ -422,9 +423,11 @@ PanelWindow {
                 visible: dev?.isLaptopBattery ?? false
                 minWidth: 76
                 icon: charging ? Icons.batteryCharging : pct <= 15 ? Icons.batteryWarning : pct <= 30 ? Icons.batteryLow : pct < 70 ? Icons.batteryMedium : Icons.batteryFull
-                iconColor: charging ? Theme.yellow : pct >= 100 ? Theme.green : pct <= 15 ? Theme.red : pct <= 30 ? Theme.peach : Theme.accent
+                iconColor: Panels.isOpen("battery", bar.modelData) ? Theme.lavender : charging ? Theme.yellow : pct >= 100 ? Theme.green : pct <= 15 ? Theme.red : pct <= 30 ? Theme.peach : Theme.accent
                 text: pct + "%"
+                clickable: true
                 tooltip: charging ? "Charging: " + duration(dev.timeToFull) : "Discharging: " + duration(dev?.timeToEmpty ?? 0)
+                onClicked: Panels.toggle("battery", bar.modelData)
             }
         }
 

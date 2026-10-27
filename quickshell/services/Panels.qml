@@ -9,7 +9,7 @@ import Quickshell.Hyprland
 Singleton {
     id: root
 
-    // Name of the open modal ("dashboard", "calendar", "updates", "power", "network", "bluetooth", "audio", "launcher", "performance", "clipboard", "emoji", "vpn", "notifications"), or "" when none is
+    // Name of the open modal ("dashboard", "calendar", "updates", "power", "network", "bluetooth", "audio", "launcher", "performance", "clipboard", "emoji", "vpn", "battery", "notifications"), or "" when none is
     property string current: ""
     property var screen: null
 
@@ -37,7 +37,7 @@ Singleton {
         toggle(name, Quickshell.screens.find(s => s.name === monitor) ?? Quickshell.screens[0]);
     }
 
-    // `qs ipc call dashboard|calendar|updates|power|network|bluetooth|audio|launcher|performance|clipboard|emoji|vpn|notifications|overview toggle`
+    // `qs ipc call dashboard|calendar|updates|power|network|bluetooth|audio|launcher|performance|clipboard|emoji|vpn|battery|notifications|overview toggle`
     IpcHandler {
         target: "dashboard"
 
@@ -131,6 +131,14 @@ Singleton {
 
         function toggle(): void {
             root.toggleFocused("vpn");
+        }
+    }
+
+    IpcHandler {
+        target: "battery"
+
+        function toggle(): void {
+            root.toggleFocused("battery");
         }
     }
 

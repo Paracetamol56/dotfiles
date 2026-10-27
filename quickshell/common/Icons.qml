@@ -127,6 +127,8 @@ Singleton {
     readonly property string leaf: "\ue2de" // leaf
     readonly property string zap: "\ue1b4" // zap
     readonly property string gauge: "\ue1bf" // gauge
+    readonly property string fan: "\ue379" // fan
+    readonly property string heartPulse: "\ue36e" // heart-pulse
     readonly property string activity: "\ue038" // activity
     readonly property string list: "\ue106" // list
     readonly property string factory: "\ue29f" // factory
